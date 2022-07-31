@@ -5,7 +5,5 @@ export {default as BasePagination} from './BasePagination';
 export {default as BaseTable} from './BaseTable';
 export {default as BaseCard} from './BaseCard';
 export {default as BaseFileInput} from './BaseFileInput';
+export {default as BaseButton} from './BaseButton';
 export {default as ImagePreview} from './ImagePreview';
-
-
-export {default as HelloWorld} from './HelloWorld'

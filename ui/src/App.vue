@@ -11,8 +11,7 @@
 </template>
 
 <script>
-import TheHeader from './components/TheHeader.vue'
-import TheFooter from './components/TheFooter.vue'
+import {TheHeader, TheFooter} from '@/components'
 
 export default {
   name: 'App',
@@ -20,10 +19,6 @@ export default {
   components: {
     TheHeader,
     TheFooter
-},
-
-  data: () => ({
-    //
-  }),
+  },
 }
 </script>
