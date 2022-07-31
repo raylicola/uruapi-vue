@@ -1,5 +1,5 @@
 <template>
-  <TheHeader />
+
   <v-container>
     <v-row class="text-center">
       <v-col cols="12">
@@ -18,14 +18,12 @@
     <ImagePreview />
     <BasePagination />
   </v-container>
-  <TheFooter />
+
 </template>
 
 <script>
 
 import {
-  TheHeader,
-  TheFooter,
   BaseTextField,
   BasePagination,
   BaseTable,
@@ -38,8 +36,6 @@ export default {
   name: 'HelloWorld',
 
   components: {
-    TheHeader,
-    TheFooter,
     BaseTextField,
     BasePagination,
     BaseTable,
