@@ -45,7 +45,6 @@ export default {
       }
       createUserWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         if (user) {
           const uid = user.uid;
