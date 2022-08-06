@@ -28,7 +28,7 @@ export default {
     const router = useRouter()
     const store = useStore()
 
-    const signin = async() => {
+    const signin = () => {
       if (
         email.value === '' ||
         password.value === '') {
@@ -54,8 +54,8 @@ export default {
             console.log(e);
             return false;
           });
+          router.push('/')
         }
-        router.push('/')
       })
       .catch((error) => {
         console.log(error.code, error.message)

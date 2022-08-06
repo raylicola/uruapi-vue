@@ -11,6 +11,7 @@
         />
       </v-col>
     </v-row>
+    <p>auth: {{auth}}</p>
     <BaseTextField />
     <BaseFileInput />
     <BaseTable />
@@ -22,7 +23,8 @@
 </template>
 
 <script>
-
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import {
   BaseTextField,
   BasePagination,
@@ -42,7 +44,14 @@ export default {
     BaseCard,
     BaseFileInput,
     ImagePreview,
-},
+  },
+  setup () {
+    const store = useStore()
+    const auth = computed(() => store.state.auth)
+    return {
+      auth
+    }
+  }
 
 }
 </script>

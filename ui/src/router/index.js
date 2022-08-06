@@ -3,7 +3,8 @@ import {
   HelloWorld,
   SignIn,
   SignUp,
-  SignUpCompleted
+  SignUpCompleted,
+  LogOut
 } from '@/pages';
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
     path: '/signup-completed',
     name: 'SignUpCompleted',
     component: SignUpCompleted
+  },
+  {
+    path: '/logout',
+    name: 'LogOut',
+    component: LogOut
   },
 ]
 
