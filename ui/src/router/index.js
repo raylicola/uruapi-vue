@@ -9,6 +9,7 @@ import {
   CreateItem,
   EditWish,
   EditItem,
+  MyPage,
 } from '@/pages';
 
 const routes = [
@@ -56,6 +57,11 @@ const routes = [
     path: '/item/edit/:item_id',
     name: 'EditItem',
     component: EditItem
+  },
+  {
+    path: '/mypage',
+    name: 'MyPage',
+    component: MyPage
   },
 ]
 
