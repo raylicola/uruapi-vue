@@ -7,6 +7,8 @@ import {
   LogOut,
   CreateWish,
   CreateItem,
+  EditWish,
+  EditItem,
 } from '@/pages';
 
 const routes = [
@@ -44,6 +46,16 @@ const routes = [
     path: '/item/create',
     name: 'CreateItem',
     component: CreateItem
+  },
+  {
+    path: '/wish/edit/:wish_id',
+    name: 'EditWish',
+    component: EditWish
+  },
+  {
+    path: '/item/edit/:item_id',
+    name: 'EditItem',
+    component: EditItem
   },
 ]
 

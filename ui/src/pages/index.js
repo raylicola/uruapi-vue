@@ -5,3 +5,5 @@ export {default as SignUpCompleted} from './SignUpCompleted'
 export {default as LogOut} from './LogOut';
 export {default as CreateWish} from './CreateWish';
 export {default as CreateItem} from './CreateItem';
+export {default as EditWish} from './EditWish';
+export {default as EditItem} from './EditItem';
