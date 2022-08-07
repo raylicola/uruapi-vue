@@ -1,19 +1,14 @@
 <template>
-  <v-text-field
+  <v-textarea
     :label="label"
     :placeholder="placeholder"
-    :type="type"
-    variant="solo"
-    clearable
-    clear-icon="mdi-delete"
-    class="w-50"
-  ></v-text-field>
+  ></v-textarea>
 </template>
 
 <script>
 
 export default {
-  name: 'BaseTextField',
+  name: 'BaseTextArea',
   props: {
     label: { type: String },
     placeholder: { type: String },

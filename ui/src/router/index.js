@@ -4,7 +4,8 @@ import {
   SignIn,
   SignUp,
   SignUpCompleted,
-  LogOut
+  LogOut,
+  CreateWish,
 } from '@/pages';
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     path: '/logout',
     name: 'LogOut',
     component: LogOut
+  },
+  {
+    path: '/wish/create',
+    name: 'CreateWish',
+    component: CreateWish
   },
 ]
 
