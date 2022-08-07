@@ -6,6 +6,7 @@ import {
   SignUpCompleted,
   LogOut,
   CreateWish,
+  CreateItem,
 } from '@/pages';
 
 const routes = [
@@ -38,6 +39,11 @@ const routes = [
     path: '/wish/create',
     name: 'CreateWish',
     component: CreateWish
+  },
+  {
+    path: '/item/create',
+    name: 'CreateItem',
+    component: CreateItem
   },
 ]
 

@@ -1,14 +1,20 @@
 <template>
-  <div class="text-h5 py-8">
+  <div class="text-h5">
     欲しいもの
   </div>
+  <small-space />
   <base-text-field label="タイトル" v-model="title"/>
   <base-text-area label="説明" v-model="detail" />
   <base-button text="投稿" @click="createWish" />
 </template>
 
 <script>
-import { BaseButton, BaseTextField, BaseTextArea } from '@/components'
+import {
+  BaseButton,
+  BaseTextField,
+  BaseTextArea,
+  SmallSpace,
+  } from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex';
@@ -16,11 +22,12 @@ import axios from 'axios'
 import { computed } from 'vue';
 
 export default {
-  name: 'SignIn',
+  name: 'CreateWish',
   components: {
     'base-button': BaseButton,
     'base-text-field': BaseTextField,
     'base-text-area': BaseTextArea,
+    'small-space': SmallSpace,
   },
   setup(){
     const title = ref('')

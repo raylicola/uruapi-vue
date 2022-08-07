@@ -2,8 +2,8 @@
   <v-img
     class="bg-white"
     width="300"
-    :aspect-ratio="1"
-    src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+    aspect-ratio="1"
+    :src="url"
     cover
   ></v-img>
 </template>
@@ -12,6 +12,11 @@
 
 export default {
   name: 'ImagePreview',
+  props: {
+    url: {
+      type: String,
+    },
+  }
 }
 
 </script>

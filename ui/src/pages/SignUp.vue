@@ -1,7 +1,8 @@
 <template>
-  <div class="text-h5 py-8">
+  <div class="text-h5">
     新規登録
   </div>
+  <small-space />
   <base-text-field label="ユーザーネーム" placeholder="やまだ" v-model="username" />
   <base-text-field label="メールアドレス" placeholder="yamada@example.com" v-model="email"/>
   <base-text-field label="パスワード" type="password" v-model="password" />
@@ -13,7 +14,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { db, auth, FirebaseTimestamp } from '@/firebase'
-import { BaseButton, BaseTextField } from '@/components'
+import { BaseButton, BaseTextField, SmallSpace } from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 
@@ -21,7 +22,8 @@ export default {
   name: 'SignUp',
   components: {
     'base-button': BaseButton,
-    'base-text-field': BaseTextField
+    'base-text-field': BaseTextField,
+    'small-space': SmallSpace,
   },
   setup(){
     const username = ref('')

@@ -1,7 +1,8 @@
 <template>
-  <div class="text-h5 py-8">
+  <div class="text-h5">
     ログイン
   </div>
+  <small-space />
   <base-text-field label="メールアドレス" placeholder="yamada@example.com" v-model="email"/>
   <base-text-field label="パスワード" type="password" v-model="password" />
   <base-button text="ログイン" @click="signin" />
@@ -11,7 +12,7 @@
 import { signInWithEmailAndPassword  } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from '@/firebase'
-import { BaseButton, BaseTextField } from '@/components'
+import { BaseButton, BaseTextField, SmallSpace } from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex';
@@ -20,7 +21,8 @@ export default {
   name: 'SignIn',
   components: {
     'base-button': BaseButton,
-    'base-text-field': BaseTextField
+    'base-text-field': BaseTextField,
+    'small-space': SmallSpace
   },
   setup(){
     const email = ref('')
