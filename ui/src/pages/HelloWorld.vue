@@ -15,7 +15,7 @@
     <BaseTextField />
     <BaseFileInput />
     <BaseTable />
-    <BaseCard />
+    <WishCard />
     <ImagePreview />
     <BasePagination />
   </v-container>
@@ -29,7 +29,7 @@ import {
   BaseTextField,
   BasePagination,
   BaseTable,
-  BaseCard,
+  WishCard,
   BaseFileInput,
   ImagePreview
 } from '@/components'
@@ -41,7 +41,7 @@ export default {
     BaseTextField,
     BasePagination,
     BaseTable,
-    BaseCard,
+    WishCard,
     BaseFileInput,
     ImagePreview,
   },

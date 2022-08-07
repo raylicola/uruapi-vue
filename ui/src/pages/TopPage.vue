@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { BaseCard, SmallSpace } from '@/components'
+import { WishCard, SmallSpace } from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -22,7 +22,7 @@ import { useRouter } from 'vue-router';
 export default {
   name: 'EditWish',
   components: {
-    'base-card': BaseCard,
+    'base-card': WishCard,
     'small-space': SmallSpace
   },
   setup(){

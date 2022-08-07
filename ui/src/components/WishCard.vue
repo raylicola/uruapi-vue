@@ -19,7 +19,7 @@
 <script>
 
 export default {
-  name: 'BaseCard',
+  name: 'WishCard',
   props: {
     title: { type: String },
     detail: { type: String },
