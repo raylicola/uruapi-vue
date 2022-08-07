@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import {
-  HelloWorld,
+  TopPage,
   SignIn,
   SignUp,
   SignUpCompleted,
@@ -14,8 +14,8 @@ import {
 const routes = [
   {
     path: '/',
-    name: 'HelloWorld',
-    component: HelloWorld
+    name: 'TopPage',
+    component: TopPage
   },
   {
     path: '/signin',
