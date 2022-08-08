@@ -59,7 +59,6 @@ export default {
       detail.value = data.item.Detail
       price.value = data.item.Price
       img.value = data.item.Img
-      console.log()
     }
 
     const uploadImage = (e) => {
@@ -90,7 +89,6 @@ export default {
     }
 
     const editItem = async() => {
-      console.log(img.value)
       if (
         title.value === '' ||
         price.value === '' ||

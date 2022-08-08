@@ -78,7 +78,6 @@ export default {
     }
 
     const createItem = async() => {
-      console.log(img.value)
       if (
         title.value === '' ||
         price.value === '' ||

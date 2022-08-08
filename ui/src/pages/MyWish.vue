@@ -40,7 +40,6 @@ export default {
       const url = '/user/' + user_id.value + '/wish'
       const {data} = await axios.get(url)
       wishes.value = data.wishes
-      console.log(data)
     }
 
     const toDetail = (wish_id) => {

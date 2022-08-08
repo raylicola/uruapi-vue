@@ -41,7 +41,6 @@ export default {
       const url = '/user/' + user_id.value + '/sold'
       const {data} = await axios.get(url)
       items.value = data.soldItems
-      console.log(data)
     }
 
     const toDetail = (item_id) => {
