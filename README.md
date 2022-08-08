@@ -16,10 +16,8 @@ API URL : https://uruapi-api.herokuapp.com/
 * 欲しいものを投稿した相手に, 自分の出品した商品を提案
 * 出品物についてのチャット
 * 出品者へのレビュー
-* 取引成立時などはメールを送信
 
 ## 工夫した点
-* 取引成立時などにメールで通知する機能を実装した
 * 分かりやすい命名, 統一感のある処理を書くように心掛けた
 * 外部のライブラリを積極的に活用した
 
@@ -28,5 +26,4 @@ API URL : https://uruapi-api.herokuapp.com/
 * Vue (Vuetify)
 * MySQL
 * Docker
-* SendGrid
 * Firebase (Firestore Database, Storage, Authentication)
