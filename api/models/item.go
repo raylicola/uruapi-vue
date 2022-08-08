@@ -10,5 +10,6 @@ type Item struct {
 	Detail     string  `form:"detail" binding:"required"`
 	Price      int     `form:"price" binding:"required"`
 	Img        string  `form:"img" binding:"required"`
+	FileName   string  `form:"file_name" binding:"required"`
 	UserID     string  `form:"user_id" binding:"required"`
 }
