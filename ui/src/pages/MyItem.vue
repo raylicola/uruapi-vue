@@ -9,7 +9,7 @@
       :title="item.Title"
       :price="item.Price"
       :img="item.Img"
-      @click="toDetail(item.ID)"
+      @click="toEdit(item.ID)"
     />
   </v-row>
 </div>
@@ -43,8 +43,8 @@ export default {
       items.value = data.items
     }
 
-    const toDetail = (item_id) => {
-      router.push('/item/' + item_id)
+    const toEdit = (item_id) => {
+      router.push('/mypage/item/edit/' + item_id)
     }
 
     onMounted(async () => {
@@ -57,7 +57,7 @@ export default {
 
     return {
       items,
-      toDetail,
+      toEdit,
     }
   }
 }

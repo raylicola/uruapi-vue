@@ -8,7 +8,7 @@
       :key="wish.ID"
       :title="wish.Title"
       :detail="wish.Detail"
-      @click="toDetail(wish.ID)"
+      @click="toEdit(wish.ID)"
     />
   </v-row>
 </div>
@@ -42,8 +42,8 @@ export default {
       wishes.value = data.wishes
     }
 
-    const toDetail = (wish_id) => {
-      router.push('/wish/' + wish_id)
+    const toEdit = (wish_id) => {
+      router.push('/mypage/wish/edit/' + wish_id)
     }
 
     onMounted(async () => {
@@ -56,7 +56,7 @@ export default {
 
     return {
       wishes,
-      toDetail,
+      toEdit,
     }
   }
 }
