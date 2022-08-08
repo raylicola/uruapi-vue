@@ -8,3 +8,7 @@ export {default as CreateItem} from './CreateItem';
 export {default as EditWish} from './EditWish';
 export {default as EditItem} from './EditItem';
 export {default as MyPage} from './MyPage';
+export {default as MyWish} from './MyWish';
+export {default as MyItem} from './MyItem';
+export {default as MySoldItem} from './MySoldItem';
+export {default as MyPurchasedItem} from './MyPurchasedItem';

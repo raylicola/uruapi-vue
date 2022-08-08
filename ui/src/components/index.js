@@ -10,3 +10,4 @@ export {default as BaseFileInput} from './BaseFileInput';
 export {default as BaseButton} from './BaseButton';
 export {default as ImagePreview} from './ImagePreview';
 export {default as SmallSpace} from './SmallSpace';
+export {default as NavigationDrawer} from './NavigationDrawer';
