@@ -43,22 +43,22 @@ const routes = [
     component: LogOut
   },
   {
-    path: '/wish/create',
+    path: '/mypage/wish/create',
     name: 'CreateWish',
     component: CreateWish
   },
   {
-    path: '/item/create',
+    path: '/mypage/item/create',
     name: 'CreateItem',
     component: CreateItem
   },
   {
-    path: '/wish/edit/:wish_id',
+    path: '/mypage/wish/edit/:wish_id',
     name: 'EditWish',
     component: EditWish
   },
   {
-    path: '/item/edit/:item_id',
+    path: '/mypage/item/edit/:item_id',
     name: 'EditItem',
     component: EditItem
   },
