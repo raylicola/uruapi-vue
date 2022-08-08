@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// レビューを作成
 func CreateTransaction(c *gin.Context) {
 	var transaction models.Transaction
 	if err := c.Bind(&transaction); err != nil {

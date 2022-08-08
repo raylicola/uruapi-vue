@@ -50,25 +50,36 @@ func GetSearchedWish(c *gin.Context) {
 }
 
 
-// 自分の投稿を取得
-func GetMyPost(c *gin.Context) {
+// 自分のWishを取得
+func GetMyWish(c *gin.Context) {
 	user_id := c.Param("user_id")
 	var wishes []models.Wish
-	var items []models.Item
 	database.DB.Where("user_id = ?", user_id).Find(&wishes)
-	database.DB.Where("user_id = ?", user_id).Find(&items)
-	c.JSON(http.StatusOK, gin.H{"wishes": wishes, "items": items})
+	c.JSON(http.StatusOK, gin.H{"wishes": wishes})
 }
 
-// 売買履歴を取得
-func GetTransaction(c *gin.Context) {
-	// 購入したもの
+// 自分のItemを取得
+func GetMyItem(c *gin.Context) {
+	user_id := c.Param("user_id")
+	var items []models.Item
+	database.DB.Where("user_id = ?", user_id).Find(&items)
+	c.JSON(http.StatusOK, gin.H{"items": items})
+}
+
+// 購入履歴を取得
+func GetMyPurchasedItem(c *gin.Context) {
 	var purchasedItems []models.Item
-	// 販売したもの
+	user_id := c.Param("user_id")
+	database.DB.Raw("SELECT * FROM items INNER JOIN transactions ON items.id = transactions.item_id WHERE 	purchaser_id = ?", user_id).Scan(&purchasedItems)
+
+	c.JSON(http.StatusOK, gin.H{"purchasedItems": purchasedItems})
+}
+
+// 販売履歴を取得
+func GetMySoldItem(c *gin.Context) {
 	var soldItems []models.Item
 	user_id := c.Param("user_id")
 	database.DB.Raw("SELECT * FROM items INNER JOIN transactions ON items.id = transactions.item_id WHERE items.user_id = ?", user_id).Scan(&soldItems)
-	database.DB.Raw("SELECT * FROM items INNER JOIN transactions ON items.id = transactions.item_id WHERE 	purchaser_id = ?", user_id).Scan(&purchasedItems)
 
-	c.JSON(http.StatusOK, gin.H{"soldItems": soldItems, "purchasedItems": purchasedItems})
+	c.JSON(http.StatusOK, gin.H{"soldItems": soldItems})
 }

@@ -61,8 +61,9 @@ func GetRouter() *gin.Engine {
 	router.GET("/item/:item_id", controllers.GetItem)
 	router.GET("/wish", controllers.GetAllWish)
 	router.GET("/wish/search", controllers.GetSearchedWish)
-	router.GET("/mypost/:user_id", controllers.GetMyPost)
-	router.GET("/transaction/:user_id", controllers.GetTransaction)
-
+	router.GET("/user/:user_id/wish", controllers.GetMyWish)
+	router.GET("/user/:user_id/item", controllers.GetMyItem)
+	router.GET("/user/:user_id/purchased", controllers.GetMyPurchasedItem)
+	router.GET("/user/:user_id/sold", controllers.GetMySoldItem)
 	return router
 }
