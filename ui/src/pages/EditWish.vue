@@ -5,7 +5,8 @@
   <small-space />
   <base-text-field label="タイトル" v-model="title"/>
   <base-text-area label="説明" v-model="detail" />
-  <base-button text="投稿" @click="editWish" />
+  <base-button text="更新" @click="editWish" class="mx-5"/>
+  <base-button text="削除" @click="deleteWish" />
 </template>
 
 <script>
@@ -66,6 +67,16 @@ export default {
       }
     }
 
+    const deleteWish = async () => {
+      try {
+        const url = '/wish/delete/' + route.params.wish_id
+        await axios.delete(url)
+        router.push('/mypage/wish')
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
     onMounted(async () => {
       getWish()
     })
@@ -79,6 +90,7 @@ export default {
       title,
       detail,
       editWish,
+      deleteWish,
     }
   }
 }

@@ -9,7 +9,8 @@
   <base-file-input @change="uploadImage"/>
   <image-preview :src="img" />
   <small-space />
-  <base-button text="投稿" @click="editItem" />
+  <base-button text="更新" @click="editItem" class="mx-5"/>
+  <base-button text="削除" @click="deleteItem" />
 </template>
 
 <script>
@@ -127,6 +128,22 @@ export default {
       }
     }
 
+    const deleteItem = async () => {
+      try {
+        const url = '/item/delete/' + route.params.item_id
+        await axios.delete(url)
+        router.push('/mypage/item')
+      } catch (e) {
+        console.log(e)
+      }
+      const desertRef = fb_ref(storage, 'images/items/'+ imgName.value);
+        deleteObject(desertRef).then(() => {
+        // File deleted successfully
+        }).catch((error) => {
+          console.log(error)
+        });
+    }
+
     onMounted(async () => {
       getItem()
     })
@@ -145,6 +162,7 @@ export default {
       detail,
       img,
       editItem,
+      deleteItem,
       uploadImage,
     }
   }
