@@ -4,7 +4,7 @@
     density="compact"
   >
 
-    <v-app-bar-title>Photos</v-app-bar-title>
+    <v-app-bar-title>UruApi</v-app-bar-title>
 
     <v-menu offset-y>
       <template v-slot:activator="{ props }">
@@ -12,7 +12,7 @@
       </template>
       <v-list>
         <v-list-item
-          v-for="(item, index) in items"
+          v-for="(item, index) in (auth? auth_menu:not_auth_menu)"
           :key="index"
           :value="index"
         >
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -37,56 +37,55 @@ export default {
     const router = useRouter()
     const store = useStore()
     const auth = computed(() => store.state.auth)
-    const items = ref([])
+    const auth_menu = [
+      {
+        title: 'ホーム',
+        clicked: () => {
+          router.push('/')
+        }
+      },
+      {
+        title: 'マイページ',
+        clicked: () => {
+          router.push('/mypage')
+        }
+      },
+      {
+        title: 'ログアウト',
+        clicked: () => {
+          store.commit('setAuth', false)
+          store.commit('setUserID', '')
+          store.commit('setUserName', '')
+          router.push('/logout')
+        }
+      }
+    ]
 
-    if(auth.value) {
-      items.value.push(
-        {
-          title: 'ホーム',
-          clicked: () => {
-            router.push('/')
-          }
-        },
-        {
-          title: 'マイページ',
-          clicked: () => {
-            router.push('/mypage')
-          }
-        },
-        {
-          title: 'ログアウト',
-          clicked: () => {
-            store.commit('setAuth', false)
-            store.commit('setUserID', '')
-            store.commit('setUserName', '')
-            router.push('/logout')
-          }
+    const not_auth_menu = [
+      {
+        title: 'ホーム',
+        clicked: () => {
+          router.push('/')
         }
-      )
-    } else {
-      items.value.push(
-        {
-          title: 'ホーム',
-          clicked: () => {
-            router.push('/')
-          }
-        },
-        {
-          title: 'ログイン',
-          clicked: () => {
-            router.push('/signin')
-          }
-        },
-        {
-          title: '新規会員登録',
-          clicked: () => {
-            router.push('/signup')
-          }
+      },
+      {
+        title: 'ログイン',
+        clicked: () => {
+          router.push('/signin')
         }
-      )
-    }
+      },
+      {
+        title: '新規会員登録',
+        clicked: () => {
+          router.push('/signup')
+        }
+      }
+    ]
+
     return {
-      items,
+      auth_menu,
+      not_auth_menu,
+      auth
     }
   }
 }

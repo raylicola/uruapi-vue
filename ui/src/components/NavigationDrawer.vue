@@ -8,6 +8,7 @@
       <v-list-item title="出品リスト" value="item" @click="item" />
       <v-list-item title="購入した商品" value="purchased" @click="purchasedItem" />
       <v-list-item title="売上履歴" value="sold" @click="soldItem" />
+      <v-list-item title="ログアウト" value="logout" @click="logout" />
     </v-list>
   </v-navigation-drawer>
 </v-card>
@@ -16,10 +17,12 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default {
   name: 'NavigationDrawer',
   setup() {
+    const store = useStore()
     const router = useRouter()
 
     const wish = () => {
@@ -40,6 +43,12 @@ export default {
     const createItem = () => {
       router.push('/mypage/item/create')
     }
+    const logout = () => {
+      store.commit('setAuth', false)
+      store.commit('setUserID', '')
+      store.commit('setUserName', '')
+      router.push('/logout')
+    }
 
     return {
       wish,
@@ -48,6 +57,7 @@ export default {
       purchasedItem,
       createItem,
       createWish,
+      logout,
     }
   }
 }
