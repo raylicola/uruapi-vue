@@ -45,6 +45,7 @@ export default {
     const detail = ref('')
     const price = ref('')
     const img = ref('')
+    const imgName = ref('')
     const prevFileName = ref('')
 
     const router = useRouter()
@@ -59,6 +60,7 @@ export default {
       detail.value = data.item.Detail
       price.value = data.item.Price
       img.value = data.item.Img
+      imgName.value = data.item.FileName
     }
 
     const uploadImage = (e) => {
@@ -73,12 +75,19 @@ export default {
         .then((url) => {
           const newImage = {id: fileName, path: url};
           img.value = newImage.path
+          imgName.value = fileName
         })
       });
 
-      const desertRef = fb_ref(storage, 'images/items/'+ prevFileName.value);
-
       if(prevFileName.value != '') {
+        const desertRef = fb_ref(storage, 'images/items/'+ prevFileName.value);
+        deleteObject(desertRef).then(() => {
+        // File deleted successfully
+        }).catch((error) => {
+          console.log(error)
+        });
+      } else {
+        const desertRef = fb_ref(storage, 'images/items/'+ imgName.value);
         deleteObject(desertRef).then(() => {
         // File deleted successfully
         }).catch((error) => {
@@ -110,6 +119,7 @@ export default {
         params.append('detail', detail.value)
         params.append('user_id', user_id.value)
         params.append('img', img.value)
+        params.append('file_name', imgName.value)
         await axios.put(url, params)
         router.push('/mypage')
       } catch (e) {

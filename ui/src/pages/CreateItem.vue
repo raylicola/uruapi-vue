@@ -45,6 +45,7 @@ export default {
     const detail = ref('')
     const price = ref('')
     const img = ref('')
+    const imgName = ref('')
     const prevFileName = ref('')
 
     const router = useRouter()
@@ -56,6 +57,7 @@ export default {
       const uuid = UUID.generate();
       const extention = file.name.split('.').pop();
       const fileName = uuid + '.' + extention;
+      imgName.value = fileName
       const storageRef = fb_ref(storage, 'images/items/'+fileName);
       uploadBytes(storageRef, file).then(() => {
         getDownloadURL(fb_ref(storage, 'images/items/'+fileName))
@@ -99,6 +101,7 @@ export default {
         params.append('detail', detail.value)
         params.append('user_id', user_id.value)
         params.append('img', img.value)
+        params.append('file_name', imgName.value)
         await axios.post(url, params)
         router.push('/mypage')
       } catch (e) {
