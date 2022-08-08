@@ -1,20 +1,15 @@
 <template>
-  <v-layout>
-    <v-navigation-drawer
-      permanent
-    >
-      <v-list
-        density="compact"
-        nav
-      >
-        <v-list-item title="欲しいもの" value="wish" @click="wish"></v-list-item>
-        <v-list-item title="出品した商品" value="item" @click="item"></v-list-item>
-        <v-list-item title="購入した商品" value="purchased" @click="purchasedItem"></v-list-item>
-        <v-list-item title="売上履歴" value="sold" @click="soldItem"></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-main style="height: 250px"></v-main>
-  </v-layout>
+<v-card>
+  <v-navigation-drawer >
+    <v-list density="compact" nav>
+      <v-list-item title="欲しいもの" value="wish" @click="wish" />
+      <v-list-item title="出品した商品" value="item" @click="item" />
+      <v-list-item title="購入した商品" value="purchased" @click="purchasedItem" />
+      <v-list-item title="売上履歴" value="sold" @click="soldItem" />
+    </v-list>
+  </v-navigation-drawer>
+</v-card>
+
 </template>
 
 <script>
