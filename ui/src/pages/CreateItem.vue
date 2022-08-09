@@ -103,7 +103,7 @@ export default {
         params.append('img', img.value)
         params.append('file_name', imgName.value)
         await axios.post(url, params)
-        router.push('/mypage')
+        router.push('/mypage/item')
       } catch (e) {
         console.log(e)
       }
