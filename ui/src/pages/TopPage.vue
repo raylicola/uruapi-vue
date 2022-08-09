@@ -7,17 +7,15 @@
 />
 </v-form>
 <small-space />
-<div >
-  <v-row>
-    <wish-card
-      v-for="wish in wishes"
-      :key="wish.ID"
-      :title="wish.Title"
-      :detail="wish.Detail"
-      @click="toDetail(wish.ID)"
-    />
-  </v-row>
-</div>
+<v-row>
+  <wish-card
+    v-for="wish in wishes"
+    :key="wish.ID"
+    :title="wish.Title"
+    :detail="wish.Detail"
+    @click="toDetail(wish.ID)"
+  />
+</v-row>
 </template>
 
 <script>

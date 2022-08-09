@@ -11,3 +11,5 @@ export {default as BaseButton} from './BaseButton';
 export {default as ImagePreview} from './ImagePreview';
 export {default as SmallSpace} from './SmallSpace';
 export {default as NavigationDrawer} from './NavigationDrawer';
+export {default as WishDetailCard} from './WishDetailCard';
+export {default as ItemDetailCard} from './ItemDetailCard';

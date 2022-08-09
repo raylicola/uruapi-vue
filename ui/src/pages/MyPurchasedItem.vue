@@ -1,18 +1,16 @@
 <template>
 <small-space />
 <navigation-drawer />
-<div >
-  <v-row>
-    <item-card
-      v-for="item in items"
-      :key="item.ID"
-      :title="item.Title"
-      :price="item.Price"
-      :img="item.Img"
-      @click="toDetail(item.ID)"
-    />
-  </v-row>
-</div>
+<v-row>
+  <item-card
+    v-for="item in items"
+    :key="item.ID"
+    :title="item.Title"
+    :price="item.Price"
+    :img="item.Img"
+    @click="toDetail(item.ID)"
+  />
+</v-row>
 </template>
 
 <script>

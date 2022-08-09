@@ -12,3 +12,6 @@ export {default as MyWish} from './MyWish';
 export {default as MyItem} from './MyItem';
 export {default as MySoldItem} from './MySoldItem';
 export {default as MyPurchasedItem} from './MyPurchasedItem';
+export {default as ItemDetail} from './ItemDetail';
+export {default as WishDetail} from './WishDetail';
+export {default as ItemSuggest} from './ItemSuggest';

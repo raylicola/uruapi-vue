@@ -1,17 +1,15 @@
 <template>
 <small-space />
 <navigation-drawer />
-<div >
-  <v-row>
-    <wish-card
-      v-for="wish in wishes"
-      :key="wish.ID"
-      :title="wish.Title"
-      :detail="wish.Detail"
-      @click="toEdit(wish.ID)"
-    />
-  </v-row>
-</div>
+<v-row>
+  <wish-card
+    v-for="wish in wishes"
+    :key="wish.ID"
+    :title="wish.Title"
+    :detail="wish.Detail"
+    @click="toEdit(wish.ID)"
+  />
+</v-row>
 </template>
 
 <script>
