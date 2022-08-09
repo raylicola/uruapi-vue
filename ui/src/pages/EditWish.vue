@@ -61,7 +61,7 @@ export default {
         params.append('detail', detail.value)
         params.append('user_id', user_id.value)
         await axios.put(url, params)
-        router.push('/mypage')
+        router.push('/mypage/wish')
       } catch (e) {
         console.log(e)
       }
