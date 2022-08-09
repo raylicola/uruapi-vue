@@ -9,7 +9,7 @@
 <small-space />
 <div >
   <v-row>
-    <base-card
+    <wish-card
       v-for="wish in wishes"
       :key="wish.ID"
       :title="wish.Title"
@@ -29,7 +29,7 @@ import { useRouter } from 'vue-router';
 export default {
   name: 'TopPage',
   components: {
-    'base-card': WishCard,
+    'wish-card': WishCard,
     'small-space': SmallSpace,
     'base-text-field': BaseTextField,
   },
