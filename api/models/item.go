@@ -12,4 +12,5 @@ type Item struct {
 	Img        string  `form:"img" binding:"required"`
 	FileName   string  `form:"file_name" binding:"required"`
 	UserID     string  `form:"user_id" binding:"required"`
+	IsSold     int     `gorm:"default:0"`
 }
