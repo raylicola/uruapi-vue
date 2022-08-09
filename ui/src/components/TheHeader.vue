@@ -4,7 +4,7 @@
     density="compact"
   >
 
-    <v-app-bar-title>UruApi</v-app-bar-title>
+    <v-app-bar-title @click="toTop">UruApi</v-app-bar-title>
 
     <v-menu offset-y>
       <template v-slot:activator="{ props }">
@@ -82,10 +82,15 @@ export default {
       }
     ]
 
+    const toTop = () => {
+      router.push("/")
+    }
+
     return {
       auth_menu,
       not_auth_menu,
-      auth
+      auth,
+      toTop,
     }
   }
 }
