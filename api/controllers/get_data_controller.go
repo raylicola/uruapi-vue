@@ -30,7 +30,7 @@ func GetItem(c *gin.Context) {
 	database.DB.Where("reviewee_id=?", item.UserID).Find(&reviews)
 	database.DB.Where("item_id=?", item_id).Find(&chats)
 
-	c.JSON(http.StatusOK, gin.H{"item": item})
+	c.JSON(http.StatusOK, gin.H{"item": item, "chats": chats, "reviews": reviews})
 }
 
 // Wishを全件取得
