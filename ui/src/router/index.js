@@ -17,6 +17,7 @@ import {
   WishDetail,
   ItemDetail,
   ItemSuggest,
+  PurchaseItem,
 } from '@/pages';
 
 const routes = [
@@ -34,11 +35,6 @@ const routes = [
     path: '/item/:item_id',
     name: 'ItemDetail',
     component: ItemDetail
-  },
-  {
-    path: '/wish/:wish_id/suggest',
-    name: 'ItemSuggest',
-    component: ItemSuggest
   },
   {
     path: '/signin',
@@ -59,6 +55,16 @@ const routes = [
     path: '/logout',
     name: 'LogOut',
     component: LogOut
+  },
+  {
+    path: '/wish/:wish_id/suggest',
+    name: 'ItemSuggest',
+    component: ItemSuggest
+  },
+  {
+    path: '/purchase/:item_id',
+    name: 'PurchaseItem',
+    component: PurchaseItem
   },
   {
     path: '/mypage/wish/create',

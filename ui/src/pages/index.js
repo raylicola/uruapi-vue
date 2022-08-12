@@ -15,3 +15,4 @@ export {default as MyPurchasedItem} from './MyPurchasedItem';
 export {default as ItemDetail} from './ItemDetail';
 export {default as WishDetail} from './WishDetail';
 export {default as ItemSuggest} from './ItemSuggest';
+export {default as PurchaseItem} from './PurchaseItem';
