@@ -6,11 +6,11 @@ import (
 
 type Item struct {
 	gorm.Model
-	Title      string  `form:"title" binding:"required"`
-	Detail     string  `form:"detail" binding:"required"`
-	Price      int     `form:"price" binding:"required"`
-	Img        string  `form:"img" binding:"required"`
-	FileName   string  `form:"file_name" binding:"required"`
-	UserID     string  `form:"user_id" binding:"required"`
-	IsSold     int     `gorm:"default:0"`
+	Title       string  `form:"title" binding:"required"`
+	Detail      string  `form:"detail" binding:"required"`
+	Price       int     `form:"price" binding:"required"`
+	Img         string  `form:"img" binding:"required"`
+	FileName    string  `form:"file_name" binding:"required"`
+	SellerID    string  `form:"seller_id" binding:"required"`
+	PurchaserID string
 }
