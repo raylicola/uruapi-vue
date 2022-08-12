@@ -26,6 +26,21 @@ const routes = [
     component: TopPage
   },
   {
+    path: '/wish/:wish_id',
+    name: 'WishDetail',
+    component: WishDetail
+  },
+  {
+    path: '/item/:item_id',
+    name: 'ItemDetail',
+    component: ItemDetail
+  },
+  {
+    path: '/wish/:wish_id/suggest',
+    name: 'ItemSuggest',
+    component: ItemSuggest
+  },
+  {
     path: '/signin',
     name: 'SignIn',
     component: SignIn
@@ -89,21 +104,6 @@ const routes = [
     path: '/mypage/purchased',
     name: 'MyPurchasedItem',
     component: MyPurchasedItem
-  },
-  {
-    path: '/wish/:wish_id',
-    name: 'WishDetail',
-    component: WishDetail
-  },
-  {
-    path: '/item/:item_id',
-    name: 'ItemDetail',
-    component: ItemDetail
-  },
-  {
-    path: '/wish/:wish_id/suggest',
-    name: 'ItemSuggest',
-    component: ItemSuggest
   },
 ]
 

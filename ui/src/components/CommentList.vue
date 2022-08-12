@@ -1,0 +1,14 @@
+<template>
+  <div>Comment List</div>
+</template>
+
+<script>
+
+export default {
+  name: 'ReviewList',
+  props: {
+    reviews: {}
+  }
+}
+
+</script>

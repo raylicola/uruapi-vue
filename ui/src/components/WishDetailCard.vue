@@ -13,6 +13,7 @@
       </div>
     </v-card-text>
     <base-button
+      v-if="auth"
       text="商品を提案する"
       class="ma-3"
       @click="suggest"
@@ -21,7 +22,9 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import { BaseButton } from '.'
 
 export default {
@@ -36,11 +39,15 @@ export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
+    const store = useStore()
+    const auth = computed(() => store.state.auth)
+
     const suggest = () => {
       router.push('/wish/'+route.params.wish_id+'/suggest')
     }
     return {
       suggest,
+      auth,
     }
   }
 }
