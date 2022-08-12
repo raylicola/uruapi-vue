@@ -12,7 +12,6 @@
         出品者へのレビュー
       </div>
       <small-space />
-      <review-list :reviews="reviews" />
     </v-col>
     <v-col cols="1"></v-col>
     <v-col cols="5">
@@ -25,8 +24,16 @@
         />
       </v-form>
       <large-space />
-      <comment-list />
-      {{chats}}
+      <div class="text-body-1">
+        コメント一覧
+      </div>
+      <chat-card
+        v-for="chat in chats"
+        :key="chat.ID"
+        :content="chat.Content"
+        :user_id="chat.UserID"
+        :seller_id="seller_id"
+      />
     </v-col>
     <v-col cols="1"></v-col>
   </v-row>
@@ -36,10 +43,9 @@
 import {
   BaseButton,
   BaseTextArea,
-  CommentList,
+  ChatCard,
   ItemDetailCard,
   LargeSpace,
-  ReviewList,
   SmallSpace,
 } from '@/components'
 import { onMounted, watch, ref, computed } from 'vue';
@@ -53,15 +59,15 @@ export default {
     'item-detail-card': ItemDetailCard,
     'large-space': LargeSpace,
     'small-space': SmallSpace,
-    'review-list': ReviewList,
-    'comment-list': CommentList,
     'base-text-area': BaseTextArea,
     'base-button': BaseButton,
+    'chat-card': ChatCard,
   },
   setup(){
     const store = useStore()
     const item_title = ref('')
     const item_detail = ref('')
+    const seller_id = ref('')
     const item_img = ref('')
     const item_price = ref('')
     const reviews = ref([])
@@ -92,6 +98,7 @@ export default {
       const {data} = await axios.get(url)
       item_title.value = data.item.Title
       item_detail.value = data.item.Detail
+      seller_id.value = data.item.UserID
       item_img.value = data.item.Img
       item_price.value = data.item.Price
       chats.value = data.chats
@@ -103,6 +110,7 @@ export default {
     })
 
     watch(
+      seller_id, () => seller_id.value,
       item_title, () => item_title.value,
       item_detail, () => item_detail.value,
       chats, () => chats.value,
@@ -120,6 +128,7 @@ export default {
       postChat,
       auth,
       chat_text,
+      seller_id,
     }
   }
 }
