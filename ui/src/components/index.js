@@ -16,3 +16,5 @@ export {default as ItemDetailCard} from './ItemDetailCard';
 export {default as ChatCard} from './ChatCard';
 export {default as ReviewCard} from './ReviewCard';
 export {default as BaseSelect} from './BaseSelect';
+export {default as MyWishCard} from './MyWishCard';
+export {default as MyItemCard} from './MyItemCard';

@@ -2,19 +2,19 @@
 <small-space />
 <navigation-drawer />
 <v-row>
-  <item-card
+  <my-item-card
     v-for="item in items"
     :key="item.ID"
     :title="item.Title"
     :price="item.Price"
     :img="item.Img"
-    @click="toEdit(item.ID)"
+    :id="item.ID"
   />
 </v-row>
 </template>
 
 <script>
-import { ItemCard, SmallSpace, NavigationDrawer } from '@/components'
+import { MyItemCard, SmallSpace, NavigationDrawer } from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
@@ -23,7 +23,7 @@ import { useStore } from 'vuex';
 export default {
   name: 'MyItem',
   components: {
-    'item-card': ItemCard,
+    'my-item-card': MyItemCard,
     'small-space': SmallSpace,
     'navigation-drawer': NavigationDrawer,
   },

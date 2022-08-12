@@ -118,7 +118,7 @@ export default {
         params.append('title', title.value)
         params.append('price', price.value)
         params.append('detail', detail.value)
-        params.append('user_id', user_id.value)
+        params.append('seller_id', user_id.value)
         params.append('img', img.value)
         params.append('file_name', imgName.value)
         await axios.put(url, params)

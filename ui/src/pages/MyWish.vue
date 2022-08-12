@@ -2,18 +2,18 @@
 <small-space />
 <navigation-drawer />
 <v-row>
-  <wish-card
+  <my-wish-card
     v-for="wish in wishes"
     :key="wish.ID"
     :title="wish.Title"
     :detail="wish.Detail"
-    @click="toEdit(wish.ID)"
+    :id="wish.ID"
   />
 </v-row>
 </template>
 
 <script>
-import { WishCard, SmallSpace, NavigationDrawer } from '@/components'
+import { MyWishCard, SmallSpace, NavigationDrawer } from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
@@ -22,7 +22,7 @@ import { useStore } from 'vuex';
 export default {
   name: 'MyWish',
   components: {
-    'wish-card': WishCard,
+    'my-wish-card': MyWishCard,
     'small-space': SmallSpace,
     'navigation-drawer': NavigationDrawer,
   },
