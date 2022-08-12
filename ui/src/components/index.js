@@ -14,5 +14,5 @@ export {default as LargeSpace} from './LargeSpace';
 export {default as NavigationDrawer} from './NavigationDrawer';
 export {default as WishDetailCard} from './WishDetailCard';
 export {default as ItemDetailCard} from './ItemDetailCard';
-export {default as ReviewList} from './ReviewList';
 export {default as ChatCard} from './ChatCard';
+export {default as ReviewCard} from './ReviewCard';

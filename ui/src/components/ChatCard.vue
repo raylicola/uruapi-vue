@@ -6,7 +6,7 @@
   >
     <v-card-text>
       <div
-        v-if="user_id == seller_id"
+        v-if="chat.UserID == seller_id"
         class="
           text--primary
           px-1
@@ -18,7 +18,7 @@
         出品者
       </div>
       <div class="text--primary">
-        {{content}}
+        {{chat.Content}}
       </div>
     </v-card-text>
   </v-card>
@@ -29,8 +29,7 @@
 export default {
   name: 'ChatCard',
   props: {
-    content: { type: String },
-    user_id: { type: String },
+    chat: { type: Object },
     seller_id: { type: String },
   },
 }

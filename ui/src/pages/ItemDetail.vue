@@ -12,7 +12,16 @@
         出品者へのレビュー
       </div>
       <small-space />
+      <review-card
+        v-for="review in reviews"
+        :key="review.ID"
+        :review="review"
+      />
     </v-col>
+    <v-divider
+        class="mx-4"
+        vertical
+      ></v-divider>
     <v-col cols="1"></v-col>
     <v-col cols="5">
       <v-form @submit.prevent v-if="auth">
@@ -30,8 +39,7 @@
       <chat-card
         v-for="chat in chats"
         :key="chat.ID"
-        :content="chat.Content"
-        :user_id="chat.UserID"
+        :chat="chat"
         :seller_id="seller_id"
       />
     </v-col>
@@ -46,6 +54,7 @@ import {
   ChatCard,
   ItemDetailCard,
   LargeSpace,
+  ReviewCard,
   SmallSpace,
 } from '@/components'
 import { onMounted, watch, ref, computed } from 'vue';
@@ -62,6 +71,7 @@ export default {
     'base-text-area': BaseTextArea,
     'base-button': BaseButton,
     'chat-card': ChatCard,
+    'review-card': ReviewCard,
   },
   setup(){
     const store = useStore()
