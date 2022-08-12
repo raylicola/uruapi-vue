@@ -3,7 +3,6 @@ export {default as TheFooter} from './TheFooter';
 export {default as BaseTextField} from './BaseTextField';
 export {default as BaseTextArea} from './BaseTextArea';
 export {default as BasePagination} from './BasePagination';
-export {default as BaseTable} from './BaseTable';
 export {default as WishCard} from './WishCard';
 export {default as ItemCard} from './ItemCard';
 export {default as BaseFileInput} from './BaseFileInput';

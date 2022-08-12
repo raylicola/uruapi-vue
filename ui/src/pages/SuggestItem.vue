@@ -23,7 +23,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default {
-  name: 'ItemSuggest',
+  name: 'SuggestItem',
   components: {
     'item-card': ItemCard,
     'small-space': SmallSpace,

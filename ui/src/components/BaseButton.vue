@@ -1,6 +1,7 @@
 <template>
   <v-btn
     color="primary"
+    variant="outlined"
   >
     {{text}}
   </v-btn>

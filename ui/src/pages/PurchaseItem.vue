@@ -1,35 +1,82 @@
 <template>
-<div class="text-h5">
-  購入画面
-</div>
+  <small-space />
+  <div class="text-h5">
+    購入内容の確認
+  </div>
+  <small-space />
+  <v-row>
+    <v-col cols="1"></v-col>
+    <v-col cols="4">
+      <item-card
+        :title="title"
+        :price="price"
+        :img="img"
+      />
+    </v-col>
+    <v-col cols="3">
+      <small-space />
+      <div class="d-flex justify-center">
+        <div class="text-h5">支払金額</div>
+        <div class="mx-4"></div>
+        <div class="text-h5">￥{{price}}</div>
+      </div>
+      <v-divider></v-divider>
+      <small-space />
+      <div class="d-flex justify-center">
+        <base-button
+          text="購入する"
+          @click="purchase"
+        />
+      </div>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 import { onMounted, watch, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios'
+import { BaseButton, ItemCard, SmallSpace } from '@/components';
+import { useStore } from 'vuex';
 
 export default {
   name: 'PurchaseItem',
-
+  components: {
+    'small-space': SmallSpace,
+    'item-card': ItemCard,
+    'base-button': BaseButton,
+  },
   setup(){
-    const item_title = ref('')
-    const item_detail = ref('')
-    const item_img = ref('')
-    const item_price = ref('')
-    const reviews = ref([])
-    const chats = ref([])
+    const title = ref('')
+    const img = ref('')
+    const price = ref('')
+    const seller_id = ref('')
     const route = useRoute()
+    const router = useRouter()
+    const store = useStore()
+    const item_id = route.params.item_id
 
     const getItemDetail = async () => {
-      const url = 'item/' + route.params.item_id
+      const url = 'item/' + item_id
       const {data} = await axios.get(url)
-      item_title.value = data.item.Title
-      item_detail.value = data.item.Detail
-      item_img.value = data.item.Img
-      item_price.value = data.item.Price
-      chats.value = data.chats
-      reviews.value = data.reviews
+      title.value = data.item.Title
+      img.value = data.item.Img
+      price.value = data.item.Price
+      seller_id.value = data.item.UserID
+    }
+
+    const purchase = async() => {
+      try {
+        const url = 'transaction/create'
+        const params = new URLSearchParams()
+        params.append('purchaser_id', store.state.user_id)
+        params.append('seller_id', seller_id.value)
+        params.append('item_id', item_id)
+        await axios.post(url, params)
+        router.push('/mypage')
+      } catch (e) {
+        console.log(e)
+      }
     }
 
     onMounted(async () => {
@@ -37,17 +84,16 @@ export default {
     })
 
     watch(
-      item_title, () => item_title.value,
-      item_detail, () => item_detail.value,
-      chats, () => chats.value,
-      reviews, () => reviews.value
+      title, () => title.value,
+      price, () => price.value,
+      img, () => img.value,
     )
 
     return {
-      item_title,
-      item_detail,
-      item_price,
-      item_img,
+      title,
+      price,
+      img,
+      purchase,
     }
   }
 }

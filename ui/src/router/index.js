@@ -16,7 +16,7 @@ import {
   MyPurchasedItem,
   WishDetail,
   ItemDetail,
-  ItemSuggest,
+  SuggestItem,
   PurchaseItem,
 } from '@/pages';
 
@@ -58,8 +58,8 @@ const routes = [
   },
   {
     path: '/wish/:wish_id/suggest',
-    name: 'ItemSuggest',
-    component: ItemSuggest
+    name: 'SuggestItem',
+    component: SuggestItem
   },
   {
     path: '/purchase/:item_id',
