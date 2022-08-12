@@ -17,7 +17,7 @@
     <v-col cols="1"></v-col>
     <v-col cols="5">
       <v-form @submit.prevent v-if="auth">
-        <base-text-area label="商品へのコメント" />
+        <base-text-area label="商品へのコメント" v-model="chat_text"/>
         <base-button
           text="コメントを送信する"
           variant="outlined"
@@ -26,6 +26,7 @@
       </v-form>
       <large-space />
       <comment-list />
+      {{chats}}
     </v-col>
     <v-col cols="1"></v-col>
   </v-row>
@@ -65,16 +66,29 @@ export default {
     const item_price = ref('')
     const reviews = ref([])
     const chats = ref([])
+    const chat_text = ref('')
     const route = useRoute()
 
     const auth = computed(() => store.state.auth)
+    const user_id = computed(() => store.state.user_id)
+    const item_id = route.params.item_id
 
-    const postChat = () => {
-      alert("post")
+    const postChat = async() => {
+      try {
+        const url = '/chat/create'
+        const params = new URLSearchParams()
+        params.append('item_id', item_id)
+        params.append('content', chat_text.value)
+        params.append('user_id', user_id.value)
+        await axios.post(url, params)
+        getItemDetail()
+      } catch (e) {
+        console.log(e)
+      }
     }
 
     const getItemDetail = async () => {
-      const url = 'item/' + route.params.item_id
+      const url = 'item/' + item_id
       const {data} = await axios.get(url)
       item_title.value = data.item.Title
       item_detail.value = data.item.Detail
@@ -92,7 +106,8 @@ export default {
       item_title, () => item_title.value,
       item_detail, () => item_detail.value,
       chats, () => chats.value,
-      reviews, () => reviews.value
+      reviews, () => reviews.value,
+      chat_text, () => chat_text.value
     )
 
     return {
@@ -104,6 +119,7 @@ export default {
       reviews,
       postChat,
       auth,
+      chat_text,
     }
   }
 }

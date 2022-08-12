@@ -48,7 +48,6 @@ export default {
       wish_title.value = data.wish.Title
       wish_detail.value = data.wish.Detail
       items.value = data.items
-      console.log(data.items)
     }
 
     const toDetail = (item_id) => {
