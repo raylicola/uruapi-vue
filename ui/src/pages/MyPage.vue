@@ -2,6 +2,7 @@
   <small-space />
   <navigation-drawer />
   <div>{{username}}</div>
+  <small-space />
   <v-row>
   <wish-card
     v-for="wish in wishes"

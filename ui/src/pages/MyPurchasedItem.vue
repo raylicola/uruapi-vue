@@ -8,7 +8,7 @@
     :title="item.Title"
     :price="item.Price"
     :img="item.Img"
-    @click="toDetail(item.ID)"
+    @click="toReviewPage(item.ID)"
   />
 </v-row>
 </template>
@@ -38,11 +38,12 @@ export default {
     const getPurchasedItem = async () => {
       const url = '/user/' + user_id.value + '/purchased'
       const {data} = await axios.get(url)
-      items.value = data.purchasedItems
+      items.value = data.Items
+      console.log(items.value)
     }
 
-    const toDetail = (item_id) => {
-      router.push('/item/' + item_id)
+    const toReviewPage = (item_id) => {
+      router.push('/mypage/review/' + item_id)
     }
 
     onMounted(async () => {
@@ -55,7 +56,7 @@ export default {
 
     return {
       items,
-      toDetail,
+      toReviewPage,
     }
   }
 }

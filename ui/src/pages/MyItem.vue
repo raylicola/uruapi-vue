@@ -38,7 +38,7 @@ export default {
     const getMyItem = async () => {
       const url = '/user/' + user_id.value + '/item'
       const {data} = await axios.get(url)
-      items.value = data.items.filter(item => item.IsSold == 0)
+      items.value = data.items.filter(item => item.PurchaserID == '')
     }
 
     const toEdit = (item_id) => {

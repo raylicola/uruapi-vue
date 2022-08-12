@@ -47,7 +47,7 @@ export default {
       const {data} = await axios.get(url)
       wish_title.value = data.wish.Title
       wish_detail.value = data.wish.Detail
-      items.value = data.items
+      items.value = data.items.filter(item => item.PurchaserID == '')
     }
 
     const toDetail = (item_id) => {

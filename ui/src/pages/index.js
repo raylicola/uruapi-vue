@@ -16,3 +16,4 @@ export {default as ItemDetail} from './ItemDetail';
 export {default as WishDetail} from './WishDetail';
 export {default as SuggestItem} from './SuggestItem';
 export {default as PurchaseItem} from './PurchaseItem';
+export {default as PostReview} from './PostReview';

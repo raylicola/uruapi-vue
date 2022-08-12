@@ -33,7 +33,7 @@
         />
       </v-form>
       <large-space />
-      <div class="text-body-1">
+      <div class="text-body-1" v-if="chats.length != 0">
         コメント一覧
       </div>
       <chat-card
@@ -108,11 +108,12 @@ export default {
       const {data} = await axios.get(url)
       item_title.value = data.item.Title
       item_detail.value = data.item.Detail
-      seller_id.value = data.item.UserID
+      seller_id.value = data.item.SellerID
       item_img.value = data.item.Img
       item_price.value = data.item.Price
       chats.value = data.chats
       reviews.value = data.reviews
+      console.log(reviews.value)
     }
 
     onMounted(async () => {

@@ -18,6 +18,7 @@ import {
   ItemDetail,
   SuggestItem,
   PurchaseItem,
+  PostReview,
 } from '@/pages';
 
 const routes = [
@@ -110,6 +111,11 @@ const routes = [
     path: '/mypage/purchased',
     name: 'MyPurchasedItem',
     component: MyPurchasedItem
+  },
+  {
+    path: '/mypage/review/:item_id',
+    name: 'PostReview',
+    component: PostReview
   },
 ]
 
