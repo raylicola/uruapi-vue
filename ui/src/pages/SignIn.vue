@@ -8,7 +8,7 @@
   <base-button text="ログイン" @click="signin" />
   <small-space />
   <div>
-    <a href="/password_reset">パスワードを忘れた方はこちら</a>
+    <a href="/password-reset">パスワードを忘れた方はこちら</a>
   </div>
 </template>
 

@@ -119,7 +119,7 @@ const routes = [
     component: PostReview
   },
   {
-    path: '/password_reset',
+    path: '/password-reset',
     name: 'ResetPassword',
     component: ResetPassword
   },
