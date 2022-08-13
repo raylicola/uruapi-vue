@@ -8,7 +8,7 @@
         {{title}}
       </div>
       <div class="my-4"></div>
-      <div class="text--primary">
+      <div class="text--primary" style="white-space: pre-line;">
         {{detail}}
       </div>
     </v-card-text>

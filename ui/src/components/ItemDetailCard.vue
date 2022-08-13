@@ -28,7 +28,7 @@
           <div class="text-h7 mb-2 text--primary">
             商品の説明
           </div>
-          <div class="text--primary">
+          <div class="text--primary" style="white-space: pre-line;">
             {{detail}}
           </div>
         </v-card-text>
