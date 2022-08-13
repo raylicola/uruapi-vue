@@ -6,6 +6,10 @@
   <base-text-field label="メールアドレス" placeholder="yamada@example.com" v-model="email"/>
   <base-text-field label="パスワード" type="password" v-model="password" />
   <base-button text="ログイン" @click="signin" />
+  <small-space />
+  <div>
+    <a href="/password_reset">パスワードを忘れた方はこちら</a>
+  </div>
 </template>
 
 <script>
@@ -60,6 +64,7 @@ export default {
         }
       })
       .catch((error) => {
+        confirm('メールアドレスかパスワードが違います。')
         console.log(error.code, error.message)
       });
     }
