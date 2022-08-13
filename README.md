@@ -34,8 +34,7 @@ URL : https://uruapi-ddf2d.web.app
 
 ## 画面
 
-
-<img src="https://user-images.githubusercontent.com/76393580/184342484-6aacd1d8-1e68-4585-bad4-8e5f26877bfb.png" width="70%">
+<img src="https://user-images.githubusercontent.com/76393580/184478492-306f1964-6643-4cc7-bfcb-2bf7a4968ae4.png" width="70%">
 
 <img src="https://user-images.githubusercontent.com/76393580/184342503-4982ba41-f9ce-4d85-ad18-2ff615b3334f.png" width="70%">
 
