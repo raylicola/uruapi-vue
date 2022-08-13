@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import { sendPasswordResetEmail } from 'firebase/auth'
+import { sendResetPasswordEmail } from 'firebase/auth'
 import { auth } from '@/firebase'
 import { BaseButton, BaseTextField, SmallSpace } from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 
 export default {
-  name: 'PasswordReset',
+  name: 'ResetPassword',
   components: {
     'base-text-field': BaseTextField,
     'base-button': BaseButton,
@@ -31,7 +31,7 @@ export default {
     const router = useRouter()
     const email = ref('')
     const resetPassword = () => {
-      sendPasswordResetEmail(auth, email.value)
+      sendResetPasswordEmail(auth, email.value)
       .then(() => {
         confirm('パスワード再設定用のメールを送信しました。')
         router.push('/signin')

@@ -19,7 +19,7 @@ import {
   SuggestItem,
   PurchaseItem,
   PostReview,
-  PasswordReset,
+  ResetPassword,
 } from '@/pages';
 
 const routes = [
@@ -120,8 +120,8 @@ const routes = [
   },
   {
     path: '/password_reset',
-    name: 'PasswordReset',
-    component: PasswordReset
+    name: 'ResetPassword',
+    component: ResetPassword
   },
 ]
 
