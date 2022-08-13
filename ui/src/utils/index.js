@@ -1,0 +1,1 @@
+export { abbreviateText } from './abbreviateText'

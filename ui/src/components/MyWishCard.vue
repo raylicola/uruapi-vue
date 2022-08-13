@@ -6,11 +6,11 @@
   >
     <v-card-text>
       <div class="text-h6 text--primary">
-        {{title}}
+        {{abbreviatedTitle}}
       </div>
       <div class="my-4"></div>
       <div class="text--primary">
-        {{detail}}
+        {{abbreviatedDetail}}
       </div>
     </v-card-text>
     <v-card-actions>
@@ -26,6 +26,8 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import { abbreviateText } from '@/utils'
+import { ref } from 'vue'
 export default {
   name: 'WishCard',
   props: {
@@ -33,8 +35,11 @@ export default {
     detail: { type: String },
     id: { type: String },
   },
-  setup() {
+  setup(props) {
     const router = useRouter()
+
+    const abbreviatedTitle = ref(abbreviateText(props.title, 9, '...'))
+    const abbreviatedDetail = ref(abbreviateText(props.detail, 83, '...'))
 
     const toDetail = (wish_id) => {
       router.push('/wish/' + wish_id)
@@ -47,6 +52,8 @@ export default {
     return {
       toDetail,
       toEdit,
+      abbreviatedTitle,
+      abbreviatedDetail
     }
   }
 }

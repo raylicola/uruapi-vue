@@ -11,7 +11,7 @@
     ></v-img>
     <v-card-text>
       <div class="text-h6 text--primary">
-        {{title}}
+        {{abbreviatedTitle}}
       </div>
       <div class="my-1"></div>
       <div class="text--primary">
@@ -22,7 +22,8 @@
 </template>
 
 <script>
-
+import { abbreviateText } from '@/utils'
+import { ref } from '@vue/reactivity'
 export default {
   name: 'WishCard',
   props: {
@@ -30,6 +31,13 @@ export default {
     price: { type: String },
     img: { type: String },
   },
+  setup(props) {
+    const abbreviatedTitle = ref(abbreviateText(props.title, 9, '...'))
+
+    return {
+      abbreviatedTitle,
+    }
+  }
 }
 
 </script>

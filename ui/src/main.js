@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 
 axios.defaults.baseURL = 'http://localhost:8888'
+// axios.defaults.baseURL = 'https://uruapi-api.herokuapp.com/'
 axios.defaults.withCredentials = true
 
 loadFonts()

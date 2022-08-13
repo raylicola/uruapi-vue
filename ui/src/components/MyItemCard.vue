@@ -11,7 +11,7 @@
     ></v-img>
     <v-card-text>
       <div class="text-h6 text--primary">
-        {{title}}
+        {{abbreviatedTitle}}
       </div>
       <div class="mt-1"></div>
       <div class="text--primary">
@@ -30,7 +30,9 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
+import { abbreviateText } from '@/utils'
 
 export default {
   name: 'WishCard',
@@ -40,8 +42,9 @@ export default {
     img: { type: String },
     id: { type: String }
   },
-  setup() {
+  setup(props) {
     const router = useRouter()
+    const abbreviatedTitle = ref(abbreviateText(props.title, 9, '...'))
 
     const toDetail = (item_id) => {
       router.push('/item/' + item_id)
@@ -54,6 +57,7 @@ export default {
     return {
       toDetail,
       toEdit,
+      abbreviatedTitle
     }
   }
 }
