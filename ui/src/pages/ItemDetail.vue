@@ -34,7 +34,7 @@
               v-if="auth"
               text="商品を購入する"
               class="ma-3"
-              @click="purchase"
+              @click="purchaseItem"
             />
           </div>
           <div class="my-4"></div>
@@ -155,6 +155,10 @@ export default {
       }
     }
 
+    const purchaseItem = () => {
+      router.push('/purchase/' + route.params.item_id)
+    }
+
     const getItemDetail = async () => {
       const url = 'item/' + item_id
       const {data} = await axios.get(url)
@@ -201,6 +205,7 @@ export default {
       seller_id,
       postChat,
       toUserProfile,
+      purchaseItem,
     }
   }
 }

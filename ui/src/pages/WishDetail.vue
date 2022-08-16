@@ -27,7 +27,7 @@
       v-if="auth"
       text="商品を提案する"
       class="ma-3"
-      @click="suggest"
+      @click="suggestItem"
     />
   </v-card>
   <small-space />
@@ -82,7 +82,7 @@ export default {
       router.push('/user/' + wish_user_id.value)
     }
 
-    const suggest = () => {
+    const suggestItem = () => {
       router.push('/wish/'+route.params.wish_id+'/suggest')
     }
 
@@ -125,7 +125,7 @@ export default {
       icon_path,
       username,
       toDetail,
-      suggest,
+      suggestItem,
       toUserProfile,
     }
   }
