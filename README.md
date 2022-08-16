@@ -33,9 +33,8 @@ URL : https://uruapi-ddf2d.web.app
 * Firebase (Firestore Database, Storage, Authentication)
 
 ## 使い方
-右上のボタンから, ユーザー登録, ログインができます
-* テストユーザーでのログインも可能
-* パスワードリセットページがNot Foundになるバグがあります
+右上のボタンから, ユーザー登録, ログインができます.<br>
+テストユーザーでのログインも可能です.
 ```
 テストユーザー
 メールアドレス：test@example.com
@@ -56,6 +55,7 @@ URL : https://uruapi-ddf2d.web.app
 
 商品のカードをクリックすると, 商品詳細画面に遷移します
 * 商品に対するチャットの閲覧・投稿
+* 商品の購入
 
 <img src="https://user-images.githubusercontent.com/76393580/184858642-c0896b11-21cd-4fae-bd1c-26b6de579ecd.png" width="70%">
 
@@ -72,7 +72,5 @@ URL : https://uruapi-ddf2d.web.app
 ユーザーのアイコンをクリックすると, ユーザーのプロフィール画面に遷移します
 * ユーザーの出品している商品の閲覧
 * ユーザーへのレビューの閲覧
-
----
 
 <img src="https://user-images.githubusercontent.com/76393580/184854492-4c2844df-a0fc-4264-98a6-63cd16ab6c59.png" width="70%">
