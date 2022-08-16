@@ -14,7 +14,7 @@ export default {
   name: 'BaseAvatar',
   props: {
     size: { type: Number },
-    src: { type: String, default: require('@/assets/default_icon.jpg') }
+    src: { type: String }
   }
 }
 

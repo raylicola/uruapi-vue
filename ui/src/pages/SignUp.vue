@@ -58,6 +58,8 @@ export default {
             email: email.value,
             username: username.value,
             uid: uid,
+            icon_path: '',
+            introduction: '',
           }
           setDoc(doc(db, "users", uid), userInitialData)
           .then(() => {
