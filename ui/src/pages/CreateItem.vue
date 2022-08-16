@@ -6,8 +6,18 @@
   <base-text-field label="タイトル" v-model="title"/>
   <base-text-field label="価格（円）" v-model="price" />
   <base-text-area label="説明" v-model="detail" />
-  <base-file-input @change="uploadImage"/>
-  <image-preview :src="img" />
+  <v-row>
+    <v-col cols="3">
+      <base-file-input
+        @change="uploadImage"
+        label="画像を選択"
+      />
+    </v-col>
+    <v-col cols="1" />
+    <v-col cols="4">
+      <image-preview :src="img" />
+    </v-col>
+  </v-row>
   <small-space />
   <base-button text="投稿" @click="createItem" />
 </template>

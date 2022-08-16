@@ -1,6 +1,6 @@
 <template>
   <v-file-input
-    label="File input"
+    :label="label"
     filled
     prepend-icon="mdi-camera"
   ></v-file-input>
@@ -10,6 +10,9 @@
 
 export default {
   name: 'BaseFileInput',
+  props: {
+    label: { type: String },
+  },
 }
 
 </script>
