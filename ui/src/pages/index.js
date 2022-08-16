@@ -19,3 +19,4 @@ export {default as PurchaseItem} from './PurchaseItem';
 export {default as PostReview} from './PostReview';
 export {default as ResetPassword} from './ResetPassword';
 export {default as EditProfile} from './EditProfile';
+export {default as UserDetail} from './UserDetail';

@@ -21,6 +21,7 @@ import {
   PostReview,
   ResetPassword,
   EditProfile,
+  UserDetail,
 } from '@/pages';
 
 const routes = [
@@ -63,6 +64,11 @@ const routes = [
     path: '/wish/:wish_id/suggest',
     name: 'SuggestItem',
     component: SuggestItem
+  },
+  {
+    path: '/user/:user_id',
+    name: 'UserDetail',
+    component: UserDetail
   },
   {
     path: '/purchase/:item_id',
