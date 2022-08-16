@@ -1,10 +1,53 @@
 <template>
-  <item-detail-card
-    :img="item_img"
-    :title="item_title"
-    :detail="item_detail"
-    :price="item_price"
-  />
+  <small-space />
+  <v-card
+    class="mx-4 my-4"
+    width="1000"
+  >
+    <v-row no-gutters>
+      <v-col cols="4">
+        <v-img
+          :src="item_path"
+          cover
+        ></v-img>
+      </v-col>
+      <v-col cols="8">
+        <v-card-text>
+          <div class="d-flex mb-2 align-center">
+            <base-avatar
+              size="40"
+              :src="icon_path"
+              @click="toUserProfile"
+            />
+            <div class="text-h7 text--primary mx-5">
+              {{username}}
+            </div>
+          </div>
+          <div class="text-h6 text--primary">
+            {{item_title}}
+          </div>
+          <div class="text-h6 text--primary">
+            ￥{{item_price}}円
+          </div>
+          <div>
+            <base-button
+              v-if="auth"
+              text="商品を購入する"
+              class="ma-3"
+              @click="purchase"
+            />
+          </div>
+          <div class="my-4"></div>
+          <div class="text-h7 mb-2 text--primary">
+            商品の説明
+          </div>
+          <div class="text--primary" style="white-space: pre-line;">
+            {{item_detail}}
+          </div>
+        </v-card-text>
+      </v-col>
+    </v-row>
+  </v-card>
   <large-space />
   <v-row no-gutters>
     <v-col cols="5">
@@ -49,45 +92,54 @@
 
 <script>
 import {
+  BaseAvatar,
   BaseButton,
   BaseTextArea,
   ChatCard,
-  ItemDetailCard,
   LargeSpace,
   ReviewCard,
   SmallSpace,
 } from '@/components'
 import { onMounted, watch, ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios'
 import { useStore } from 'vuex';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from '@/firebase'
 
 export default {
   name: 'ItemDetail',
   components: {
-    'item-detail-card': ItemDetailCard,
     'large-space': LargeSpace,
     'small-space': SmallSpace,
     'base-text-area': BaseTextArea,
     'base-button': BaseButton,
     'chat-card': ChatCard,
     'review-card': ReviewCard,
+    'base-avatar': BaseAvatar,
   },
   setup(){
     const store = useStore()
     const item_title = ref('')
     const item_detail = ref('')
     const seller_id = ref('')
-    const item_img = ref('')
+    const item_path = ref('')
     const item_price = ref('')
+    const icon_path = ref('')
+    const username = ref('')
     const reviews = ref([])
     const chats = ref([])
     const chat_text = ref('')
     const route = useRoute()
+    const router = useRouter()
 
     const auth = computed(() => store.state.auth)
     const user_id = computed(() => store.state.user_id)
     const item_id = route.params.item_id
+
+    const toUserProfile = () => {
+      router.push('/user/' + seller_id.value)
+    }
 
     const postChat = async() => {
       try {
@@ -109,11 +161,15 @@ export default {
       item_title.value = data.item.Title
       item_detail.value = data.item.Detail
       seller_id.value = data.item.SellerID
-      item_img.value = data.item.Img
+      item_path.value = data.item.Img
       item_price.value = data.item.Price
       chats.value = data.chats
       reviews.value = data.reviews
-      console.log(reviews.value)
+
+      const docRef = doc(db, "users", seller_id.value);
+      const docSnap = await getDoc(docRef);
+      icon_path.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
+      username.value = docSnap.data().username
     }
 
     onMounted(async () => {
@@ -124,6 +180,8 @@ export default {
       seller_id, () => seller_id.value,
       item_title, () => item_title.value,
       item_detail, () => item_detail.value,
+      icon_path, () => icon_path.value,
+      username, () => username.value,
       chats, () => chats.value,
       reviews, () => reviews.value,
       chat_text, () => chat_text.value
@@ -133,13 +191,16 @@ export default {
       item_title,
       item_detail,
       item_price,
-      item_img,
+      item_path,
+      icon_path,
+      username,
       chats,
       reviews,
-      postChat,
       auth,
       chat_text,
       seller_id,
+      postChat,
+      toUserProfile,
     }
   }
 }
