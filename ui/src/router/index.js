@@ -20,6 +20,7 @@ import {
   PurchaseItem,
   PostReview,
   ResetPassword,
+  EditProfile,
 } from '@/pages';
 
 const routes = [
@@ -117,6 +118,11 @@ const routes = [
     path: '/mypage/review/:item_id',
     name: 'PostReview',
     component: PostReview
+  },
+  {
+    path: '/mypage/profile/edit',
+    name: 'EditProfile',
+    component: EditProfile
   },
   {
     path: '/password-reset',
