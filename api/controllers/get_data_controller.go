@@ -19,18 +19,16 @@ func GetWish(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"wish": wish, "items": items})
 }
 
-// Item(+Chat, Review)を1件取得
+// Item(+Chat)を1件取得
 func GetItem(c *gin.Context) {
 	item_id := c.Param("item_id")
 	var item models.Item
 	var chats []models.Chat
-	var reviews []models.Review
 
 	database.DB.Where("id = ?", item_id).First(&item)
-	database.DB.Where("reviewee_id=?", item.SellerID).Find(&reviews)
 	database.DB.Where("item_id=?", item_id).Find(&chats)
 
-	c.JSON(http.StatusOK, gin.H{"item": item, "chats": chats, "reviews": reviews})
+	c.JSON(http.StatusOK, gin.H{"item": item, "chats": chats})
 }
 
 // Wishを全件取得
@@ -49,6 +47,21 @@ func GetSearchedWish(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"wishes": wishes})
 }
 
+// 該当ユーザーのItemを取得
+func GetSellerItem(c *gin.Context) {
+	seller_id := c.Param("seller_id")
+	var items []models.Item
+	database.DB.Where("seller_id = ?", seller_id).Find(&items)
+	c.JSON(http.StatusOK, gin.H{"items": items})
+}
+
+// 該当ユーザーのReviewを取得
+func GetSellerReview(c *gin.Context) {
+	var reviews []models.Review
+	seller_id := c.Param("seller_id")
+	database.DB.Where("reviewee_id=?", seller_id).Find(&reviews)
+	c.JSON(http.StatusOK, gin.H{"reviews": reviews})
+}
 
 // 自分のWishを取得
 func GetMyWish(c *gin.Context) {

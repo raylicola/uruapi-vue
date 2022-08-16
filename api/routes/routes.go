@@ -57,6 +57,8 @@ func GetRouter() *gin.Engine {
 	router.POST("/transaction/create", controllers.CreateTransaction)
 
 	// Get Data
+	router.GET("/seller/:seller_id", controllers.GetSellerItem)
+	router.GET("/seller/review/:seller_id", controllers.GetSellerReview)
 	router.GET("/wish/:wish_id", controllers.GetWish)
 	router.GET("/item/:item_id", controllers.GetItem)
 	router.GET("/wish", controllers.GetAllWish)
