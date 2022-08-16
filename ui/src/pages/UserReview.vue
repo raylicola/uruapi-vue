@@ -14,8 +14,8 @@
     </v-col>
     <v-col cols="2">
       <base-button
-        text="レビューを見る"
-        @click="toReviewPage"
+        text="商品を見る"
+        @click="toItemPage"
       />
     </v-col>
   </v-row>
@@ -26,25 +26,23 @@
   <small-space />
   <v-divider></v-divider>
   <small-space />
-  <div v-if="items.length != 0">
-    <div class="text-h5">
-      出品している商品
+  <div v-if="reviews.length != 0">
+    <div class="text-body-1">
+      出品者へのレビュー
     </div>
     <small-space />
+    <review-card
+      v-for="review in reviews"
+      :key="review.ID"
+      :review="review"
+    />
+    <small-space />
     <v-row>
-      <item-card
-        v-for="item in items"
-        :key="item.ID"
-        :title="item.Title"
-        :price="item.Price"
-        :img="item.Img"
-        @click="toDetail(item.ID)"
-      />
     </v-row>
   </div>
   <div v-else>
     <div class="text-h5">
-      出品している商品はありません
+      レビューがありません
     </div>
   </div>
 </template>
@@ -53,8 +51,8 @@
 import {
   SmallSpace,
   BaseAvatar,
-  ItemCard,
   BaseButton,
+  ReviewCard,
 } from '@/components'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -67,8 +65,8 @@ export default {
   components: {
     'small-space': SmallSpace,
     'base-avatar': BaseAvatar,
-    'item-card': ItemCard,
     'base-button': BaseButton,
+    'review-card': ReviewCard,
   },
   setup() {
     const route = useRoute()
@@ -77,7 +75,7 @@ export default {
     const icon_path = ref('')
     const introduction = ref('')
     const username = ref('')
-    const items = ref([])
+    const reviews = ref([])
 
     const user_id = route.params.user_id
 
@@ -92,17 +90,17 @@ export default {
       introduction.value = docSnap.data().introduction
       username.value = docSnap.data().username
 
-      const url = 'seller/' + user_id
+      const url = '/seller/review/' + user_id
       const {data} = await axios.get(url)
-      items.value = data.items.filter(item => item.PurchaserID == '')
+      reviews.value = data.reviews
     }
 
     const toDetail = (item_id) => {
       router.push('/item/' + item_id)
     }
 
-    const toReviewPage = () => {
-      router.push('/user/' + user_id + '/review')
+    const toItemPage = () => {
+      router.push('/user/' + user_id)
     }
 
     onMounted(async () => {
@@ -112,17 +110,17 @@ export default {
     watch(
       introduction, () => introduction.value,
       icon_path, () => icon_path.value,
-      items, () => items.value,
+      reviews, () => reviews.value,
     )
 
     return {
       username,
       introduction,
       icon_path,
-      items,
+      reviews,
       editProfile,
       toDetail,
-      toReviewPage,
+      toItemPage,
     }
   }
 }

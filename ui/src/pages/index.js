@@ -20,3 +20,4 @@ export {default as PostReview} from './PostReview';
 export {default as ResetPassword} from './ResetPassword';
 export {default as EditProfile} from './EditProfile';
 export {default as UserDetail} from './UserDetail';
+export {default as UserReview} from './UserReview';

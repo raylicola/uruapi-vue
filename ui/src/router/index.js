@@ -22,6 +22,7 @@ import {
   ResetPassword,
   EditProfile,
   UserDetail,
+  UserReview,
 } from '@/pages';
 
 const routes = [
@@ -69,6 +70,11 @@ const routes = [
     path: '/user/:user_id',
     name: 'UserDetail',
     component: UserDetail
+  },
+  {
+    path: '/user/:user_id/review',
+    name: 'UserReview',
+    component: UserReview
   },
   {
     path: '/purchase/:item_id',

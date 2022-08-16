@@ -50,23 +50,7 @@
   </v-card>
   <large-space />
   <v-row no-gutters>
-    <v-col cols="5">
-      <div class="text-body-1">
-        出品者へのレビュー
-      </div>
-      <small-space />
-      <review-card
-        v-for="review in reviews"
-        :key="review.ID"
-        :review="review"
-      />
-    </v-col>
-    <v-divider
-        class="mx-4"
-        vertical
-      ></v-divider>
-    <v-col cols="1"></v-col>
-    <v-col cols="5">
+    <v-col>
       <v-form @submit.prevent v-if="auth">
         <base-text-area label="商品へのコメント" v-model="chat_text"/>
         <base-button
@@ -75,7 +59,9 @@
           @click="postChat"
         />
       </v-form>
-      <large-space />
+    </v-col>
+    <v-col cols="1"></v-col>
+    <v-col>
       <div class="text-body-1" v-if="chats.length != 0">
         コメント一覧
       </div>
@@ -86,7 +72,6 @@
         :seller_id="seller_id"
       />
     </v-col>
-    <v-col cols="1"></v-col>
   </v-row>
 </template>
 
@@ -97,7 +82,6 @@ import {
   BaseTextArea,
   ChatCard,
   LargeSpace,
-  ReviewCard,
   SmallSpace,
 } from '@/components'
 import { onMounted, watch, ref, computed } from 'vue';
@@ -115,7 +99,6 @@ export default {
     'base-text-area': BaseTextArea,
     'base-button': BaseButton,
     'chat-card': ChatCard,
-    'review-card': ReviewCard,
     'base-avatar': BaseAvatar,
   },
   setup(){
