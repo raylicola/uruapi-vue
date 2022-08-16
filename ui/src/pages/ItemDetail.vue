@@ -49,28 +49,29 @@
     </v-row>
   </v-card>
   <large-space />
-  <v-row no-gutters>
-    <v-col>
+  <v-row>
+    <v-col
+      cols="12"
+      md="6"
+    >
       <v-form @submit.prevent v-if="auth">
-        <base-text-area label="商品へのコメント" v-model="chat_text"/>
-        <base-button
-          text="コメントを送信する"
-          variant="outlined"
-          @click="postChat"
-        />
-      </v-form>
-    </v-col>
-    <v-col cols="1"></v-col>
-    <v-col>
-      <div class="text-body-1" v-if="chats.length != 0">
-        コメント一覧
-      </div>
-      <chat-card
-        v-for="chat in chats"
-        :key="chat.ID"
-        :chat="chat"
-        :seller_id="seller_id"
-      />
+    <base-text-area label="商品へのコメント" v-model="chat_text"/>
+    <base-button
+      text="コメントを送信する"
+      variant="outlined"
+      @click="postChat"
+    />
+    </v-form>
+    <small-space />
+    <div class="text-body-1" v-if="chats.length != 0">
+      コメント一覧
+    </div>
+    <chat-card
+      v-for="chat in chats"
+      :key="chat.ID"
+      :chat="chat"
+      :seller_id="seller_id"
+    />
     </v-col>
   </v-row>
 </template>
@@ -132,6 +133,7 @@ export default {
         params.append('content', chat_text.value)
         params.append('user_id', user_id.value)
         await axios.post(url, params)
+        chat_text.value = ""
         getItemDetail()
       } catch (e) {
         console.log(e)

@@ -10,7 +10,7 @@
         :src="icon_path"
       />
     </v-col>
-    <v-col cols="3">
+    <v-col cols="2">
       <base-file-input
         @change="uploadImage"
         label="アイコン画像を変更"
@@ -18,10 +18,17 @@
     </v-col>
   </v-row>
   <small-space />
-  <base-text-field label="ユーザーネーム" v-model="username"/>
-  <base-text-area label="自己紹介" v-model="introduction" />
-  <small-space />
-  <base-button text="更新" @click="updateProfile" class="mx-5"/>
+  <v-row>
+    <v-col
+      cols="12"
+      md="6"
+    >
+      <base-text-field label="ユーザーネーム" v-model="username"/>
+      <base-text-area label="自己紹介" v-model="introduction" />
+      <small-space />
+      <base-button text="更新" @click="updateProfile" class="mx-5"/>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

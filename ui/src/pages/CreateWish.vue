@@ -3,8 +3,15 @@
     欲しいもの
   </div>
   <small-space />
-  <base-text-field label="タイトル" v-model="title"/>
-  <base-text-area label="説明" v-model="detail" />
+  <v-row>
+    <v-col
+      cols="12"
+      md="6"
+    >
+      <base-text-field label="タイトル" v-model="title"/>
+      <base-text-area label="説明" v-model="detail" />
+    </v-col>
+  </v-row>
   <base-button text="投稿" @click="createWish" />
 </template>
 

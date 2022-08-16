@@ -3,9 +3,16 @@
     出品
   </div>
   <small-space />
-  <base-text-field label="タイトル" v-model="title"/>
-  <base-text-field label="価格（円）" v-model="price" />
-  <base-text-area label="説明" v-model="detail" />
+  <v-row>
+    <v-col
+      cols="12"
+      md="6"
+    >
+      <base-text-field label="タイトル" v-model="title"/>
+      <base-text-field label="価格（円）" v-model="price" />
+      <base-text-area label="説明" v-model="detail" />
+    </v-col>
+  </v-row>
   <v-row>
     <v-col cols="3">
       <base-file-input
