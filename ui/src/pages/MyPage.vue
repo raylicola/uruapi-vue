@@ -21,7 +21,7 @@
     </v-col>
   </v-row>
   <small-space />
-  <div>
+  <div style="white-space: pre-line;">
     {{introduction}}
   </div>
 </template>
