@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { sendResetPasswordEmail } from 'firebase/auth'
+import { sendPasswordResetEmail } from 'firebase/auth'
 import { auth } from '@/firebase'
 import { BaseButton, BaseTextField, SmallSpace } from '@/components'
 import { ref } from '@vue/reactivity'
@@ -31,7 +31,7 @@ export default {
     const router = useRouter()
     const email = ref('')
     const resetPassword = () => {
-      sendResetPasswordEmail(auth, email.value)
+      sendPasswordResetEmail(auth, email.value)
       .then(() => {
         confirm('パスワード再設定用のメールを送信しました。')
         router.push('/signin')
