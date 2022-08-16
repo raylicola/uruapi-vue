@@ -31,20 +31,27 @@
     />
   </v-card>
   <small-space />
-  <div class="text-h5">
-    提案されている商品
+  <div v-if="items.length != 0">
+    <div class="text-h5">
+      提案されている商品
+    </div>
+    <small-space />
+    <v-row>
+      <item-card
+        v-for="item in items"
+        :key="item.ID"
+        :title="item.Title"
+        :price="item.Price"
+        :img="item.Img"
+        @click="toDetail(item.ID)"
+      />
+    </v-row>
   </div>
-  <small-space />
-  <v-row>
-    <item-card
-      v-for="item in items"
-      :key="item.ID"
-      :title="item.Title"
-      :price="item.Price"
-      :img="item.Img"
-      @click="toDetail(item.ID)"
-    />
-  </v-row>
+  <div v-else>
+    <div class="text-h5">
+      提案されている商品はありません
+    </div>
+  </div>
 </template>
 
 <script>

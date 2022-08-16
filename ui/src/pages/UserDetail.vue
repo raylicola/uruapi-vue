@@ -20,20 +20,27 @@
   <small-space />
   <v-divider></v-divider>
   <small-space />
-  <div class="text-h5">
-    出品している商品
+  <div v-if="items.length != 0">
+    <div class="text-h5">
+      出品している商品
+    </div>
+    <small-space />
+    <v-row>
+      <item-card
+        v-for="item in items"
+        :key="item.ID"
+        :title="item.Title"
+        :price="item.Price"
+        :img="item.Img"
+        @click="toDetail(item.ID)"
+      />
+    </v-row>
   </div>
-  <small-space />
-  <v-row>
-    <item-card
-      v-for="item in items"
-      :key="item.ID"
-      :title="item.Title"
-      :price="item.Price"
-      :img="item.Img"
-      @click="toDetail(item.ID)"
-    />
-  </v-row>
+  <div v-else>
+    <div class="text-h5">
+      出品している商品はありません
+    </div>
+  </div>
 </template>
 
 <script>
@@ -42,8 +49,7 @@ import {
   BaseAvatar,
   ItemCard,
 } from '@/components'
-import { computed, onMounted, ref, watch } from 'vue'
-import { useStore } from 'vuex'
+import { onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { db } from '@/firebase'
 import { doc, getDoc } from "firebase/firestore";
@@ -57,13 +63,12 @@ export default {
     'item-card': ItemCard,
   },
   setup() {
-    const store = useStore()
     const route = useRoute()
     const router = useRouter()
 
-    const username = computed(() => store.state.user_name)
     const icon_path = ref('')
     const introduction = ref('')
+    const username = ref('')
     const items = ref([])
 
     const editProfile = () => {
@@ -75,6 +80,7 @@ export default {
       const docSnap = await getDoc(docRef);
       icon_path.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
       introduction.value = docSnap.data().introduction
+      username.value = docSnap.data().username
 
       const url = 'seller/' + route.params.user_id
       const {data} = await axios.get(url)

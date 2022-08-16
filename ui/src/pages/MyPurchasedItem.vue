@@ -1,16 +1,27 @@
 <template>
-<small-space />
-<navigation-drawer />
-<v-row>
-  <item-card
-    v-for="item in items"
-    :key="item.ID"
-    :title="item.Title"
-    :price="item.Price"
-    :img="item.Img"
-    @click="toReviewPage(item.ID)"
-  />
-</v-row>
+  <small-space />
+  <navigation-drawer />
+  <div v-if="items.length != 0">
+    <div class="text-h5">
+      購入履歴
+    </div>
+    <small-space />
+    <v-row>
+      <item-card
+        v-for="item in items"
+        :key="item.ID"
+        :title="item.Title"
+        :price="item.Price"
+        :img="item.Img"
+        @click="toReviewPage(item.ID)"
+      />
+    </v-row>
+  </div>
+  <div v-else>
+    <div class="text-h5">
+      購入履歴がありません
+    </div>
+  </div>
 </template>
 
 <script>

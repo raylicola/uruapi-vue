@@ -1,15 +1,26 @@
 <template>
-<small-space />
-<navigation-drawer />
-<v-row>
-  <my-wish-card
-    v-for="wish in wishes"
-    :key="wish.ID"
-    :title="wish.Title"
-    :detail="wish.Detail"
-    :id="wish.ID"
-  />
-</v-row>
+  <small-space />
+  <navigation-drawer />
+  <div v-if="wishes.length != 0">
+    <div class="text-h5">
+      欲しいものリスト
+    </div>
+    <small-space />
+    <v-row>
+      <my-wish-card
+        v-for="wish in wishes"
+        :key="wish.ID"
+        :title="wish.Title"
+        :detail="wish.Detail"
+        :id="wish.ID"
+      />
+    </v-row>
+  </div>
+  <div v-else>
+    <div class="text-h5">
+      欲しいものが投稿されていません
+    </div>
+  </div>
 </template>
 
 <script>

@@ -2,11 +2,11 @@
 <v-card>
   <v-navigation-drawer >
     <v-list density="compact" nav>
-      <v-list-item title="マイページ" value="createWish" @click="mypage" />
-      <v-list-item title="欲しいものリスト" value="wish" @click="wish" />
-      <v-list-item title="出品リスト" value="item" @click="item" />
+      <v-list-item title="プロフィール" value="createWish" @click="mypage" />
       <v-list-item title="欲しいものを投稿する" value="createWish" @click="createWish" />
       <v-list-item title="商品を出品する" value="createItem" @click="createItem" />
+      <v-list-item title="欲しいものリスト" value="wish" @click="wish" />
+      <v-list-item title="出品リスト" value="item" @click="item" />
       <v-list-item title="購入した商品" value="purchased" @click="purchasedItem" />
       <v-list-item title="売上履歴" value="sold" @click="soldItem" />
       <v-list-item title="ログアウト" value="logout" @click="logout" />
