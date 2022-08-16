@@ -7,9 +7,7 @@
   <base-text-field label="パスワード" type="password" v-model="password" />
   <base-button text="ログイン" @click="signin" />
   <small-space />
-  <div>
-    <a href="/password-reset">パスワードを忘れた方はこちら</a>
-  </div>
+  <v-btn href="/password-reset">パスワードを忘れた方はこちら</v-btn>
 </template>
 
 <script>
