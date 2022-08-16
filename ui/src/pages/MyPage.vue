@@ -52,7 +52,7 @@ export default {
     const router = useRouter()
 
     const username = computed(() => store.state.user_name)
-    const userID = computed(() => store.state.user_id)
+    const user_id = computed(() => store.state.user_id)
     const icon_path = ref('')
     const introduction = ref('')
 
@@ -61,7 +61,7 @@ export default {
     }
 
     const getUserProfile = async () => {
-      const docRef = doc(db, "users", userID.value);
+      const docRef = doc(db, "users", user_id.value);
       const docSnap = await getDoc(docRef);
       icon_path.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
       introduction.value = docSnap.data().introduction
