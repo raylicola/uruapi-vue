@@ -40,7 +40,7 @@ import { computed, onMounted, watch } from 'vue'
 import UUID from 'uuidjs'
 import { storage } from '@/firebase'
 import { getDownloadURL, ref as fb_ref, uploadBytes, deleteObject } from "firebase/storage";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from '@/firebase'
 
 export default {
@@ -99,10 +99,10 @@ export default {
     }
 
     const updateProfile = async() => {
-      await setDoc(doc(db, "users", user_id.value), {
+      await updateDoc(doc(db, "users", user_id.value), {
         username: username.value,
         introduction: introduction.value,
-        icon_path: icon_path.value,
+        icon_path: icon_path.value == require('@/assets/default_icon.jpg') ? "" : icon_path.value,
       });
       store.commit('setUserName', username.value)
       router.push('/mypage')
