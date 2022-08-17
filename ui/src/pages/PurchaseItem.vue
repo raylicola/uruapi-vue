@@ -52,28 +52,28 @@ export default {
     const title = ref('')
     const img = ref('')
     const price = ref('')
-    const seller_id = ref('')
+    const sellerID = ref('')
     const route = useRoute()
     const router = useRouter()
     const store = useStore()
-    const item_id = route.params.item_id
+    const itemID = route.params.itemID
 
     const getItemDetail = async () => {
-      const url = 'item/' + item_id
+      const url = 'item/' + itemID
       const {data} = await axios.get(url)
       title.value = data.item.Title
       img.value = data.item.Img
       price.value = data.item.Price
-      seller_id.value = data.item.UserID
+      sellerID.value = data.item.UserID
     }
 
     const purchase = async() => {
       try {
         const url = 'transaction/create'
         const params = new URLSearchParams()
-        params.append('purchaser_id', store.state.user_id)
-        params.append('seller_id', seller_id.value)
-        params.append('item_id', item_id)
+        params.append('purchaser_id', store.state.userID)
+        params.append('seller_id', sellerID.value)
+        params.append('item_id', itemID)
         await axios.post(url, params)
         router.push('/mypage')
       } catch (e) {

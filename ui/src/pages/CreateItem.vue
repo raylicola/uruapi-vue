@@ -23,7 +23,7 @@
     </v-col>
     <v-col cols="1" />
     <v-col cols="4">
-      <image-preview :src="img" />
+      <image-preview :src="itemPath" />
     </v-col>
   </v-row>
   <small-space />
@@ -47,7 +47,7 @@ import { computed } from 'vue'
 import axios from 'axios'
 import UUID from 'uuidjs'
 import { storage } from '@/firebase'
-import { getDownloadURL, ref as fb_ref, uploadBytes, deleteObject } from "firebase/storage";
+import { getDownloadURL, ref as fbRef, uploadBytes, deleteObject } from "firebase/storage";
 
 export default {
   name: 'CreateItem',
@@ -64,30 +64,30 @@ export default {
     const title = ref('')
     const detail = ref('')
     const price = ref('')
-    const img = ref('')
-    const imgName = ref('')
+    const itemPath = ref('')
+    const itemFileName = ref('')
     const prevFileName = ref('')
 
     const router = useRouter()
     const store = useStore()
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const uploadImage = (e) => {
       const file = e.target.files[0]
       const uuid = UUID.generate();
       const extention = file.name.split('.').pop();
       const fileName = uuid + '.' + extention;
-      imgName.value = fileName
-      const storageRef = fb_ref(storage, 'images/items/'+fileName);
+      itemFileName.value = fileName
+      const storageRef = fbRef(storage, 'images/items/'+fileName);
       uploadBytes(storageRef, file).then(() => {
-        getDownloadURL(fb_ref(storage, 'images/items/'+fileName))
+        getDownloadURL(fbRef(storage, 'images/items/'+fileName))
         .then((url) => {
           const newImage = {id: fileName, path: url};
-          img.value = newImage.path
+          itemPath.value = newImage.path
         })
       });
 
-      const desertRef = fb_ref(storage, 'images/items/'+ prevFileName.value);
+      const desertRef = fbRef(storage, 'images/items/'+ prevFileName.value);
 
       if(prevFileName.value != '') {
         deleteObject(desertRef).then(() => {
@@ -108,7 +108,7 @@ export default {
           return false
       }
 
-      if(img.value == '') {
+      if(itemPath.value == '') {
         alert('商品の画像を選択してください')
         return false
       }
@@ -119,9 +119,9 @@ export default {
         params.append('title', title.value)
         params.append('price', price.value)
         params.append('detail', detail.value)
-        params.append('seller_id', user_id.value)
-        params.append('img', img.value)
-        params.append('file_name', imgName.value)
+        params.append('seller_id', userID.value)
+        params.append('img', itemPath.value)
+        params.append('file_name', itemFileName.value)
         await axios.post(url, params)
         router.push('/mypage/item')
       } catch (e) {
@@ -133,7 +133,7 @@ export default {
       title,
       price,
       detail,
-      img,
+      itemPath,
       createItem,
       uploadImage,
     }

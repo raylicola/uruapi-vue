@@ -27,7 +27,6 @@
 import { MyWishCard, SmallSpace, NavigationDrawer } from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default {
@@ -38,21 +37,14 @@ export default {
     'navigation-drawer': NavigationDrawer,
   },
   setup(){
-    const router = useRouter()
     const store = useStore()
-
-
     const wishes = ref([])
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const getMyWish = async () => {
-      const url = '/user/' + user_id.value + '/wish'
+      const url = '/user/' + userID.value + '/wish'
       const {data} = await axios.get(url)
       wishes.value = data.wishes
-    }
-
-    const toEdit = (wish_id) => {
-      router.push('/mypage/wish/edit/' + wish_id)
     }
 
     onMounted(async () => {
@@ -65,7 +57,6 @@ export default {
 
     return {
       wishes,
-      toEdit,
     }
   }
 }

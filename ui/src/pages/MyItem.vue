@@ -44,16 +44,16 @@ export default {
 
 
     const items = ref([])
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const getMyItem = async () => {
-      const url = '/user/' + user_id.value + '/item'
+      const url = '/user/' + userID.value + '/item'
       const {data} = await axios.get(url)
       items.value = data.items.filter(item => item.PurchaserID == '')
     }
 
-    const toEdit = (item_id) => {
-      router.push('/mypage/item/edit/' + item_id)
+    const toEdit = (itemID) => {
+      router.push('/mypage/item/edit/' + itemID)
     }
 
     onMounted(async () => {

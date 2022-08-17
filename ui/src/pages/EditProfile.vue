@@ -8,7 +8,7 @@
     <v-col cols="2">
       <base-avatar
         size="100"
-        :src="icon_path"
+        :src="iconPath"
       />
     </v-col>
     <v-col cols="2">
@@ -24,7 +24,7 @@
       cols="12"
       md="6"
     >
-      <base-text-field label="ユーザーネーム" v-model="username"/>
+      <base-text-field label="ユーザーネーム" v-model="userName"/>
       <base-text-area label="自己紹介" v-model="introduction" />
       <small-space />
       <base-button text="更新" @click="updateProfile" class="mx-5"/>
@@ -41,7 +41,7 @@ import {
   SmallSpace,
   BaseAvatar,
   BackButton,
-  } from '@/components'
+} from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
@@ -65,14 +65,14 @@ export default {
   },
   setup(){
     const introduction = ref('')
-    const icon_path = ref('')
-    const username = ref('')
-    const imgName = ref('')
-    const prevFileName = ref('')
+    const iconPath = ref('')
+    const userName = ref('')
+    const iconFileName = ref('')
+    const prevIconFileName = ref('')
 
     const router = useRouter()
     const store = useStore()
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const uploadImage = (e) => {
       const file = e.target.files[0]
@@ -85,45 +85,45 @@ export default {
         getDownloadURL(fb_ref(storage, 'images/icons/'+fileName))
         .then((url) => {
           const newImage = {id: fileName, path: url};
-          icon_path.value = newImage.path
-          imgName.value = fileName
+          iconPath.value = newImage.path
+          iconFileName.value = fileName
         })
       });
 
-      if(prevFileName.value != '') {
-        const desertRef = fb_ref(storage, 'images/icons/'+ prevFileName.value);
+      if(prevIconFileName.value != '') {
+        const desertRef = fb_ref(storage, 'images/icons/'+ prevIconFileName.value);
         deleteObject(desertRef).then(() => {
         // File deleted successfully
         }).catch((error) => {
           console.log(error)
         });
       } else {
-        const desertRef = fb_ref(storage, 'images/icons/'+ imgName.value);
+        const desertRef = fb_ref(storage, 'images/icons/'+ iconFileName.value);
         deleteObject(desertRef).then(() => {
         // File deleted successfully
         }).catch((error) => {
           console.log(error)
         });
       }
-      prevFileName.value = fileName
+      prevIconFileName.value = fileName
     }
 
     const updateProfile = async() => {
-      await updateDoc(doc(db, "users", user_id.value), {
-        username: username.value,
+      await updateDoc(doc(db, "users", userID.value), {
+        username: userName.value,
         introduction: introduction.value,
-        icon_path: icon_path.value == require('@/assets/default_icon.jpg') ? "" : icon_path.value,
+        icon_path: iconPath.value == require('@/assets/default_icon.jpg') ? "" : iconPath.value,
       });
-      store.commit('setUserName', username.value)
+      store.commit('setUserName', userName.value)
       router.push('/mypage')
     }
 
     const getUserProfile = async () => {
-      const docRef = doc(db, "users", user_id.value);
+      const docRef = doc(db, "users", userID.value);
       const docSnap = await getDoc(docRef);
-      icon_path.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
+      iconPath.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
       introduction.value = docSnap.data().introduction
-      username.value = docSnap.data().username
+      userName.value = docSnap.data().username
     }
 
     onMounted(async () => {
@@ -132,15 +132,15 @@ export default {
 
     watch(
       introduction, () => introduction.value,
-      username, () => username.value,
-      icon_path, () => icon_path.value,
-      prevFileName, () => prevFileName.value
+      userName, () => userName.value,
+      iconPath, () => iconPath.value,
+      prevIconFileName, () => prevIconFileName.value
     )
 
     return {
-      username,
+      userName,
       introduction,
-      icon_path,
+      iconPath,
       updateProfile,
       uploadImage,
     }

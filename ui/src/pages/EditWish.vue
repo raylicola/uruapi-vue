@@ -47,10 +47,11 @@ export default {
     const router = useRouter()
     const store = useStore()
     const route = useRoute()
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
+    const wishID = route.params.wishID
 
     const getWish = async () => {
-      const url = 'wish/' + route.params.wish_id
+      const url = 'wish/' + wishID
       const {data} = await axios.get(url)
       title.value = data.wish.Title
       detail.value = data.wish.Detail
@@ -65,11 +66,11 @@ export default {
       }
 
       try {
-        const url = '/wish/edit/' + route.params.wish_id
+        const url = '/wish/edit/' + wishID
         const params = new URLSearchParams()
         params.append('title', title.value)
         params.append('detail', detail.value)
-        params.append('user_id', user_id.value)
+        params.append('user_id', userID.value)
         await axios.put(url, params)
         router.push('/mypage/wish')
       } catch (e) {
@@ -79,7 +80,7 @@ export default {
 
     const deleteWish = async () => {
       try {
-        const url = '/wish/delete/' + route.params.wish_id
+        const url = '/wish/delete/' + wishID
         await axios.delete(url)
         router.push('/mypage/wish')
       } catch (e) {

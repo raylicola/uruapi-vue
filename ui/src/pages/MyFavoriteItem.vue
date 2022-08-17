@@ -47,13 +47,12 @@ export default {
     const store = useStore()
     const router = useRouter()
     const items = ref([])
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const getMyFavoriteItem = async () => {
-      const url = '/favorite/' + user_id.value
+      const url = '/favorite/' + userID.value
       const {data} = await axios.get(url)
       items.value = data.favorites
-      console.log(items.value)
     }
 
     const toDetail = (item_id) => {

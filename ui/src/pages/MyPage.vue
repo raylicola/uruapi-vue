@@ -5,12 +5,12 @@
     <v-col cols="2">
       <base-avatar
         size="100"
-        :src="icon_path"
+        :src="iconPath"
       />
     </v-col>
     <v-col cols="5">
       <div class="text-h5">
-        {{username}}
+        {{userName}}
       </div>
     </v-col>
     <v-col cols="2">
@@ -51,9 +51,9 @@ export default {
     const store = useStore()
     const router = useRouter()
 
-    const username = computed(() => store.state.user_name)
-    const user_id = computed(() => store.state.user_id)
-    const icon_path = ref('')
+    const userName = computed(() => store.state.userName)
+    const userID = computed(() => store.state.userID)
+    const iconPath = ref('')
     const introduction = ref('')
 
     const editProfile = () => {
@@ -61,9 +61,9 @@ export default {
     }
 
     const getUserProfile = async () => {
-      const docRef = doc(db, "users", user_id.value);
+      const docRef = doc(db, "users", userID.value);
       const docSnap = await getDoc(docRef);
-      icon_path.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
+      iconPath.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
       introduction.value = docSnap.data().introduction
     }
 
@@ -73,13 +73,13 @@ export default {
 
     watch(
       introduction, () => introduction.value,
-      icon_path, () => icon_path.value,
+      iconPath, () => iconPath.value,
     )
 
     return {
-      username,
+      userName,
       introduction,
-      icon_path,
+      iconPath,
       editProfile,
     }
   }

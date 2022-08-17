@@ -3,7 +3,7 @@
     新規登録
   </div>
   <small-space />
-  <base-text-field label="ユーザーネーム" placeholder="やまだ" v-model="username" />
+  <base-text-field label="ユーザーネーム" placeholder="やまだ" v-model="userName" />
   <base-text-field label="メールアドレス" placeholder="yamada@example.com" v-model="email"/>
   <base-text-field label="パスワード" type="password" v-model="password" />
   <base-text-field label="パスワード（確認）" type="password" v-model="confirmPassword"/>
@@ -26,7 +26,7 @@ export default {
     'small-space': SmallSpace,
   },
   setup(){
-    const username = ref('')
+    const userName = ref('')
     const email = ref('')
     const password = ref('')
     const confirmPassword = ref('')
@@ -34,7 +34,7 @@ export default {
 
     const signup = async() => {
       if (
-        username.value === '' ||
+        userName.value === '' ||
         email.value === '' ||
         password.value === '' ||
         confirmPassword.value === '') {
@@ -56,7 +56,7 @@ export default {
             created_at: timestamp,
             updated_at: timestamp,
             email: email.value,
-            username: username.value,
+            username: userName.value,
             uid: uid,
             icon_path: '',
             introduction: '',
@@ -72,7 +72,7 @@ export default {
     }
 
     return {
-      username,
+      userName,
       email,
       password,
       confirmPassword,

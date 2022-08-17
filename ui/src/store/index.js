@@ -5,13 +5,13 @@ import createPersistedState from 'vuex-persistedstate'
 const store = createStore({
   state: {
     auth: false,
-    user_id: '',
-    user_name: '',
+    userID: '',
+    userName: '',
   },
   mutations: {
     setAuth: (state, auth) => state.auth = auth,
-    setUserID: (state, user_id) => state.user_id = user_id,
-    setUserName: (state, user_name) => state.user_name = user_name,
+    setUserID: (state, userID) => state.userID = userID,
+    setUserName: (state, userName) => state.userName = userName,
   },
   plugins: [createPersistedState(
     { // ストレージのキーを指定

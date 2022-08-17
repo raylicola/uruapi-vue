@@ -5,12 +5,12 @@
     <v-col cols="2">
       <base-avatar
         size="100"
-        :src="icon_path"
+        :src="iconPath"
       />
     </v-col>
     <v-col cols="5">
       <div class="text-h5">
-        {{username}}
+        {{userName}}
       </div>
     </v-col>
     <v-col cols="2">
@@ -77,35 +77,35 @@ export default {
     const route = useRoute()
     const router = useRouter()
 
-    const icon_path = ref('')
+    const iconPath = ref('')
     const introduction = ref('')
-    const username = ref('')
+    const userName = ref('')
     const items = ref([])
 
-    const user_id = route.params.user_id
+    const userID = route.params.userID
 
     const editProfile = () => {
       router.push('/mypage/profile/edit')
     }
 
     const getUserProfile = async () => {
-      const docRef = doc(db, "users", user_id);
+      const docRef = doc(db, "users", userID);
       const docSnap = await getDoc(docRef);
-      icon_path.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
+      iconPath.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
       introduction.value = docSnap.data().introduction
-      username.value = docSnap.data().username
+      userName.value = docSnap.data().username
 
-      const url = 'seller/' + user_id
+      const url = 'seller/' + userID
       const {data} = await axios.get(url)
       items.value = data.items.filter(item => item.PurchaserID == '')
     }
 
-    const toDetail = (item_id) => {
-      router.push('/item/' + item_id)
+    const toDetail = (itemID) => {
+      router.push('/item/' + itemID)
     }
 
     const toReviewPage = () => {
-      router.push('/user/' + user_id + '/review')
+      router.push('/user/' + userID + '/review')
     }
 
     onMounted(async () => {
@@ -114,14 +114,14 @@ export default {
 
     watch(
       introduction, () => introduction.value,
-      icon_path, () => icon_path.value,
+      iconPath, () => iconPath.value,
       items, () => items.value,
     )
 
     return {
-      username,
+      userName,
       introduction,
-      icon_path,
+      iconPath,
       items,
       editProfile,
       toDetail,

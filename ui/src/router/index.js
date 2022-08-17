@@ -33,12 +33,12 @@ const routes = [
     component: TopPage
   },
   {
-    path: '/wish/:wish_id',
+    path: '/wish/:wishID',
     name: 'WishDetail',
     component: WishDetail
   },
   {
-    path: '/item/:item_id',
+    path: '/item/:itemID',
     name: 'ItemDetail',
     component: ItemDetail
   },
@@ -63,22 +63,22 @@ const routes = [
     component: LogOut
   },
   {
-    path: '/wish/:wish_id/suggest',
+    path: '/wish/:wishID/suggest',
     name: 'SuggestItem',
     component: SuggestItem
   },
   {
-    path: '/user/:user_id',
+    path: '/user/:userID',
     name: 'UserDetail',
     component: UserDetail
   },
   {
-    path: '/user/:user_id/review',
+    path: '/user/:userID/review',
     name: 'UserReview',
     component: UserReview
   },
   {
-    path: '/purchase/:item_id',
+    path: '/purchase/:itemID',
     name: 'PurchaseItem',
     component: PurchaseItem
   },
@@ -93,12 +93,12 @@ const routes = [
     component: CreateItem
   },
   {
-    path: '/mypage/wish/edit/:wish_id',
+    path: '/mypage/wish/edit/:wishID',
     name: 'EditWish',
     component: EditWish
   },
   {
-    path: '/mypage/item/edit/:item_id',
+    path: '/mypage/item/edit/:itemID',
     name: 'EditItem',
     component: EditItem
   },
@@ -133,7 +133,7 @@ const routes = [
     component: MyPurchasedItem
   },
   {
-    path: '/mypage/review/:item_id',
+    path: '/mypage/review/:itemID',
     name: 'PostReview',
     component: PostReview
   },

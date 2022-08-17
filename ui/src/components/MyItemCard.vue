@@ -46,12 +46,12 @@ export default {
     const router = useRouter()
     const abbreviatedTitle = ref(abbreviateText(props.title, 9, '...'))
 
-    const toDetail = (item_id) => {
-      router.push('/item/' + item_id)
+    const toDetail = (itemID) => {
+      router.push('/item/' + itemID)
     }
 
-    const toEdit = (item_id) => {
-      router.push('/mypage/item/edit/' + item_id)
+    const toEdit = (itemID) => {
+      router.push('/mypage/item/edit/' + itemID)
     }
 
     return {

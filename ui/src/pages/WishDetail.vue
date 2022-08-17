@@ -9,19 +9,19 @@
       <div class="d-flex mb-2 align-center">
         <base-avatar
           size="40"
-          :src="icon_path"
+          :src="iconPath"
           @click="toUserProfile"
         />
         <div class="text-h7 text--primary mx-5">
-          {{username}}
+          {{userName}}
         </div>
       </div>
       <div class="text-h6 text--primary">
-        {{wish_title}}
+        {{wishTitle}}
       </div>
       <div class="my-4"></div>
       <div class="text--primary" style="white-space: pre-line;">
-        {{wish_detail}}
+        {{wishDetail}}
       </div>
     </v-card-text>
     <base-button
@@ -80,39 +80,39 @@ export default {
     'back-button': BackButton,
   },
   setup(){
-
-    const wish_title = ref('')
-    const wish_detail = ref('')
-    const wish_user_id = ref('')
-    const icon_path = ref('')
-    const username = ref('')
-    const items = ref([])
     const route = useRoute()
     const router = useRouter()
     const store = useStore()
+    const wishID = route.params.wishID
+    const wishTitle = ref('')
+    const wishDetail = ref('')
+    const wishUserID = ref('')
+    const iconPath = ref('')
+    const userName = ref('')
+    const items = ref([])
 
     const auth = computed(() => store.state.auth)
 
     const toUserProfile = () => {
-      router.push('/user/' + wish_user_id.value)
+      router.push('/user/' + wishUserID.value)
     }
 
     const suggestItem = () => {
-      router.push('/wish/'+route.params.wish_id+'/suggest')
+      router.push('/wish/' + wishID + '/suggest')
     }
 
     const getWishDetail = async () => {
-      const url = 'wish/' + route.params.wish_id
+      const url = 'wish/' + wishID
       const {data} = await axios.get(url)
-      wish_title.value = data.wish.Title
-      wish_detail.value = data.wish.Detail
-      wish_user_id.value = data.wish.UserID
+      wishTitle.value = data.wish.Title
+      wishDetail.value = data.wish.Detail
+      wishUserID.value = data.wish.UserID
       items.value = data.items.filter(item => item.PurchaserID == '')
 
-      const docRef = doc(db, "users", wish_user_id.value);
+      const docRef = doc(db, "users", wishUserID.value);
       const docSnap = await getDoc(docRef);
-      icon_path.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
-      username.value = docSnap.data().username
+      iconPath.value = docSnap.data().icon_path ? docSnap.data().icon_path : require('@/assets/default_icon.jpg')
+      userName.value = docSnap.data().username
     }
 
     const toDetail = (item_id) => {
@@ -124,21 +124,21 @@ export default {
     })
 
     watch(
-      wish_title, () => wish_title.value,
-      wish_detail, () => wish_detail.value,
-      wish_user_id, () => wish_user_id.value,
+      wishTitle, () => wishTitle.value,
+      wishDetail, () => wishDetail.value,
+      wishUserID, () => wishUserID.value,
       items, () => items.value,
-      icon_path, () => icon_path.value,
-      username, () => username.value,
+      iconPath, () => iconPath.value,
+      userName, () => userName.value,
     )
 
     return {
-      wish_title,
-      wish_detail,
+      wishTitle,
+      wishDetail,
       items,
       auth,
-      icon_path,
-      username,
+      iconPath,
+      userName,
       toDetail,
       suggestItem,
       toUserProfile,

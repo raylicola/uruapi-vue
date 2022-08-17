@@ -44,17 +44,16 @@ export default {
 
 
     const items = ref([])
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const getPurchasedItem = async () => {
-      const url = '/user/' + user_id.value + '/purchased'
+      const url = '/user/' + userID.value + '/purchased'
       const {data} = await axios.get(url)
-      items.value = data.Items
-      console.log(items.value)
+      items.value = data.items
     }
 
-    const toReviewPage = (item_id) => {
-      router.push('/mypage/review/' + item_id)
+    const toReviewPage = (itemID) => {
+      router.push('/mypage/review/' + itemID)
     }
 
     onMounted(async () => {

@@ -55,7 +55,6 @@ export default {
     const deleteItem = async(favoriteID) => {
       const url = '/favorite/delete/' + favoriteID
       await axios.delete(url)
-      window.confirm('お気に入り登録を解除しました')
       router.go()
     }
 

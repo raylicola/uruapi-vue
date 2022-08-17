@@ -23,7 +23,7 @@
     </v-col>
     <v-col cols="1" />
     <v-col cols="4">
-      <image-preview :src="img" />
+      <image-preview :src="itemPath" />
     </v-col>
   </v-row>
   <small-space />
@@ -48,7 +48,7 @@ import { computed, onMounted, watch } from 'vue'
 import axios from 'axios'
 import UUID from 'uuidjs'
 import { storage } from '@/firebase'
-import { getDownloadURL, ref as fb_ref, uploadBytes, deleteObject } from "firebase/storage";
+import { getDownloadURL, ref as fbRef, uploadBytes, deleteObject } from "firebase/storage";
 
 export default {
   name: 'EditItem',
@@ -62,26 +62,27 @@ export default {
     'back-button': BackButton,
   },
   setup(){
-    const title = ref('')
-    const detail = ref('')
-    const price = ref('')
-    const img = ref('')
-    const imgName = ref('')
-    const prevFileName = ref('')
-
     const router = useRouter()
     const route = useRoute()
     const store = useStore()
-    const user_id = computed(() => store.state.user_id)
+
+    const title = ref('')
+    const detail = ref('')
+    const price = ref('')
+    const itemPath = ref('')
+    const itemFileName = ref('')
+    const prevItemFileName = ref('')
+    const userID = computed(() => store.state.userID)
+    const itemID = route.params.itemID
 
     const getItem = async () => {
-      const url = 'item/' + route.params.item_id
+      const url = 'item/' + itemID
       const {data} = await axios.get(url)
       title.value = data.item.Title
       detail.value = data.item.Detail
       price.value = data.item.Price
-      img.value = data.item.Img
-      imgName.value = data.item.FileName
+      itemPath.value = data.item.Img
+      itemFileName.value = data.item.FileName
     }
 
     const uploadImage = (e) => {
@@ -89,33 +90,31 @@ export default {
       const uuid = UUID.generate();
       const extention = file.name.split('.').pop();
       const fileName = uuid + '.' + extention;
-      const storageRef = fb_ref(storage, 'images/items/'+fileName);
+      const storageRef = fbRef(storage, 'images/items/'+fileName);
 
       uploadBytes(storageRef, file).then(() => {
-        getDownloadURL(fb_ref(storage, 'images/items/'+fileName))
+        getDownloadURL(fbRef(storage, 'images/items/'+fileName))
         .then((url) => {
           const newImage = {id: fileName, path: url};
-          img.value = newImage.path
-          imgName.value = fileName
+          itemPath.value = newImage.path
+          itemFileName.value = fileName
         })
       });
 
-      if(prevFileName.value != '') {
-        const desertRef = fb_ref(storage, 'images/items/'+ prevFileName.value);
+      if(prevItemFileName.value != '') {
+        const desertRef = fbRef(storage, 'images/items/'+ prevItemFileName.value);
         deleteObject(desertRef).then(() => {
-        // File deleted successfully
         }).catch((error) => {
           console.log(error)
         });
       } else {
-        const desertRef = fb_ref(storage, 'images/items/'+ imgName.value);
+        const desertRef = fbRef(storage, 'images/items/'+ itemFileName.value);
         deleteObject(desertRef).then(() => {
-        // File deleted successfully
         }).catch((error) => {
           console.log(error)
         });
       }
-      prevFileName.value = fileName
+      prevItemFileName.value = fileName
     }
 
     const editItem = async() => {
@@ -127,20 +126,20 @@ export default {
           return false
       }
 
-      if(img.value == '') {
+      if(itemPath.value == '') {
         alert('商品の画像を選択してください')
         return false
       }
 
       try {
-        const url = '/item/edit/' + route.params.item_id
+        const url = '/item/edit/' + itemID
         const params = new URLSearchParams()
         params.append('title', title.value)
         params.append('price', price.value)
         params.append('detail', detail.value)
-        params.append('seller_id', user_id.value)
-        params.append('img', img.value)
-        params.append('file_name', imgName.value)
+        params.append('seller_id', userID.value)
+        params.append('img', itemPath.value)
+        params.append('file_name', itemFileName.value)
         await axios.put(url, params)
         router.push('/mypage/item')
       } catch (e) {
@@ -150,13 +149,13 @@ export default {
 
     const deleteItem = async () => {
       try {
-        const url = '/item/delete/' + route.params.item_id
+        const url = '/item/delete/' + itemID
         await axios.delete(url)
         router.push('/mypage/item')
       } catch (e) {
         console.log(e)
       }
-      const desertRef = fb_ref(storage, 'images/items/'+ imgName.value);
+      const desertRef = fbRef(storage, 'images/items/'+ itemFileName.value);
         deleteObject(desertRef).then(() => {
         // File deleted successfully
         }).catch((error) => {
@@ -172,15 +171,15 @@ export default {
       detail, () => detail.value,
       title, () => title.value,
       price, () => price.value,
-      img, () => img.value,
-      prevFileName, () => prevFileName.value
+      itemPath, () => itemPath.value,
+      prevItemFileName, () => prevItemFileName.value
     )
 
     return {
       title,
       price,
       detail,
-      img,
+      itemPath,
       editItem,
       deleteItem,
       uploadImage,

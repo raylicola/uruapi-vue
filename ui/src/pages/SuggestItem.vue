@@ -34,13 +34,13 @@ export default {
     const router = useRouter()
     const route = useRoute()
     const store = useStore()
-    const wish_id = route.params.wish_id
+    const wishID = route.params.wishID
 
     const items = ref([])
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const getMyItem = async () => {
-      const url = '/user/' + user_id.value + '/item'
+      const url = '/user/' + userID.value + '/item'
       const {data} = await axios.get(url)
       items.value = data.items.filter(item => item.PurchaserID == '')
     }
@@ -50,10 +50,10 @@ export default {
         try {
           const url = '/sale/create'
           const params = new URLSearchParams()
-          params.append('wish_id', wish_id)
+          params.append('wish_id', wishID)
           params.append('item_id', item.ID)
           await axios.post(url, params)
-          router.push('/wish/' + wish_id)
+          router.push('/wish/' + wishID)
         } catch (e) {
           console.log(e)
         }

@@ -44,7 +44,7 @@ export default {
     const detail = ref('')
     const router = useRouter()
     const store = useStore()
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const createWish = async() => {
       if (
@@ -59,7 +59,7 @@ export default {
         const params = new URLSearchParams()
         params.append('title', title.value)
         params.append('detail', detail.value)
-        params.append('user_id', user_id.value)
+        params.append('user_id', userID.value)
         await axios.post(url, params)
         router.push('/mypage/wish')
       } catch (e) {

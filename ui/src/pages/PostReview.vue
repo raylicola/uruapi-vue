@@ -56,22 +56,22 @@ export default {
     const router = useRouter()
     const store= useStore()
 
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
     const detail = ref('')
     const rate = ref(3)
     const img = ref('')
     const title = ref('')
     const price = ref('')
-    const seller_id = ref('')
+    const sellerID = ref('')
     const rates = [1, 2, 3, 4, 5]
 
     const getWishDetail = async () => {
-      const url = 'item/' + route.params.item_id
+      const url = 'item/' + route.params.itemID
       const {data} = await axios.get(url)
       img.value = data.item.Img
       title.value = data.item.Title
       price.value = data.item.Price
-      seller_id.value = data.item.SellerID
+      sellerID.value = data.item.SellerID
     }
 
     const postReview = async() => {
@@ -80,8 +80,8 @@ export default {
         const params = new URLSearchParams()
         params.append('detail',  detail.value)
         params.append('rate', rate.value)
-        params.append('reviewer_id', user_id.value)
-        params.append('reviewee_id', seller_id.value)
+        params.append('reviewer_id', userID.value)
+        params.append('reviewee_id', sellerID.value)
         await axios.post(url, params)
         router.push('/mypage/purchased')
       } catch (e) {
@@ -99,7 +99,7 @@ export default {
       img, () => img.value,
       title, () => title.value,
       price, () => price.value,
-      seller_id, () => seller_id.value,
+      sellerID, () => sellerID.value,
       rate, () => rate.value,
     )
 

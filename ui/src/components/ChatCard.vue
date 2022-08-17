@@ -6,7 +6,7 @@
   >
     <v-card-text>
       <div
-        v-if="chat.UserID == seller_id"
+        v-if="chat.UserID == sellerID"
         class="
           text--primary
           px-1
@@ -30,7 +30,7 @@ export default {
   name: 'ChatCard',
   props: {
     chat: { type: Object },
-    seller_id: { type: String },
+    sellerID: { type: String },
   },
 }
 

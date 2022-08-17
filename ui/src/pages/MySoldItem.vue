@@ -40,12 +40,12 @@ export default {
     const store = useStore()
 
     const items = ref([])
-    const user_id = computed(() => store.state.user_id)
+    const userID = computed(() => store.state.userID)
 
     const getSoldItem = async () => {
-      const url = '/user/' + user_id.value + '/sold'
+      const url = '/user/' + userID.value + '/sold'
       const {data} = await axios.get(url)
-      items.value = data.Items
+      items.value = data.items
     }
 
     onMounted(async () => {
