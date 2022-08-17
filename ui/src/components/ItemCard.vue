@@ -25,7 +25,7 @@
 import { abbreviateText } from '@/utils'
 import { ref } from '@vue/reactivity'
 export default {
-  name: 'WishCard',
+  name: 'ItemCard',
   props: {
     title: { type: String },
     price: { type: String },

@@ -29,7 +29,7 @@ import { useRouter } from 'vue-router'
 import { abbreviateText } from '@/utils'
 import { ref } from 'vue'
 export default {
-  name: 'WishCard',
+  name: 'MyWishCard',
   props: {
     title: { type: String },
     detail: { type: String },

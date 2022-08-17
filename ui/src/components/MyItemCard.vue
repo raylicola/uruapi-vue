@@ -35,7 +35,7 @@ import { useRouter } from 'vue-router'
 import { abbreviateText } from '@/utils'
 
 export default {
-  name: 'WishCard',
+  name: 'MyItemCard',
   props: {
     title: { type: String },
     price: { type: String },
