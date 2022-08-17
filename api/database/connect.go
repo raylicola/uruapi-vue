@@ -37,5 +37,6 @@ func Connect() {
 		&models.Sale{},
 		&models.Chat{},
 		&models.Review{},
+		&models.Favorite{},
 	)
 }

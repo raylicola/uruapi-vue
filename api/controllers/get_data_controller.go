@@ -96,3 +96,11 @@ func GetMySoldItem(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"Items": Items})
 }
+
+// お気に入り登録した商品を取得
+func GetMyFavorite(c *gin.Context) {
+	user_id := c.Param("user_id")
+	var favorites []models.Favorite
+	database.DB.Where("user_id = ?", user_id).Find(&favorites)
+	c.JSON(http.StatusOK, gin.H{"favorites": favorites})
+}

@@ -44,6 +44,10 @@ func GetRouter() *gin.Engine {
 	router.PUT("/wish/edit/:wish_id", controllers.EditWish)
 	router.DELETE("/wish/delete/:wish_id", controllers.DeleteWish)
 
+	// Favorite
+	router.POST("/favorite/create", controllers.PostFavorite)
+	router.DELETE("/favorite/delete/:favorite_id", controllers.DeleteFavorite)
+
 	// Chat
 	router.POST("/chat/create", controllers.PostChat)
 
@@ -67,5 +71,6 @@ func GetRouter() *gin.Engine {
 	router.GET("/user/:user_id/item", controllers.GetMyItem)
 	router.GET("/user/:user_id/purchased", controllers.GetMyPurchasedItem)
 	router.GET("/user/:user_id/sold", controllers.GetMySoldItem)
+	router.GET("/favorite/:user_id", controllers.GetMyFavorite)
 	return router
 }
