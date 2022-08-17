@@ -10,7 +10,7 @@ import (
 
 
 // 出品する商品を作成
-func CreateWish(c *gin.Context) {
+func PostWish(c *gin.Context) {
 
 	var wish models.Wish
 	if err := c.Bind(&wish); err != nil {

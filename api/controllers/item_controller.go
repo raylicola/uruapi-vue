@@ -10,7 +10,7 @@ import (
 
 
 // 出品する商品を作成
-func CreateItem(c *gin.Context) {
+func PostItem(c *gin.Context) {
 
 	var item models.Item
 	if err := c.Bind(&item); err != nil {

@@ -9,7 +9,7 @@ import (
 )
 
 // チャットを作成
-func CreateChat(c *gin.Context) {
+func PostChat(c *gin.Context) {
 	var chat models.Chat
 	if err := c.Bind(&chat); err != nil {
 		c.JSON(http.StatusBadRequest, err)

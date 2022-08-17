@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateTransaction(c *gin.Context) {
+func PostTransaction(c *gin.Context) {
 	var item models.Item
 	var transaction models.Transaction
 	if err := c.Bind(&transaction); err != nil {

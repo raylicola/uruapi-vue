@@ -35,26 +35,26 @@ func GetRouter() *gin.Engine {
 	}))
 
 	// Item
-	router.POST("/item/create", controllers.CreateItem)
+	router.POST("/item/create", controllers.PostItem)
 	router.PUT("/item/edit/:item_id", controllers.EditItem)
 	router.DELETE("/item/delete/:item_id", controllers.DeleteItem)
 
 	// Wish
-	router.POST("/wish/create", controllers.CreateWish)
+	router.POST("/wish/create", controllers.PostWish)
 	router.PUT("/wish/edit/:wish_id", controllers.EditWish)
 	router.DELETE("/wish/delete/:wish_id", controllers.DeleteWish)
 
 	// Chat
-	router.POST("/chat/create", controllers.CreateChat)
+	router.POST("/chat/create", controllers.PostChat)
 
 	// Review
-	router.POST("/review/create", controllers.CreateReview)
+	router.POST("/review/create", controllers.PostReview)
 
 	// Sale
-	router.POST("/sale/create", controllers.CreateSale)
+	router.POST("/sale/create", controllers.PostSale)
 
 	// Transaction
-	router.POST("/transaction/create", controllers.CreateTransaction)
+	router.POST("/transaction/create", controllers.PostTransaction)
 
 	// Get Data
 	router.GET("/seller/:seller_id", controllers.GetSellerItem)

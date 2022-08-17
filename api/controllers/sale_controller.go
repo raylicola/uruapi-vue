@@ -9,7 +9,7 @@ import (
 )
 
 // レビューを作成
-func CreateSale(c *gin.Context) {
+func PostSale(c *gin.Context) {
 	var sale models.Sale
 	if err := c.Bind(&sale); err != nil {
 		c.JSON(http.StatusBadRequest, err)

@@ -9,7 +9,7 @@ import (
 )
 
 // レビューを作成
-func CreateReview(c *gin.Context) {
+func PostReview(c *gin.Context) {
 	var review models.Review
 	if err := c.Bind(&review); err != nil {
 		c.JSON(http.StatusBadRequest, err)
