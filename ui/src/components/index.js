@@ -5,6 +5,7 @@ export {default as BaseTextArea} from './BaseTextArea';
 export {default as BasePagination} from './BasePagination';
 export {default as WishCard} from './WishCard';
 export {default as ItemCard} from './ItemCard';
+export {default as MyFavoriteItemCard} from './MyFavoriteItemCard';
 export {default as BaseFileInput} from './BaseFileInput';
 export {default as BaseButton} from './BaseButton';
 export {default as ImagePreview} from './ImagePreview';

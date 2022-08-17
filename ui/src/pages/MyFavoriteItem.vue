@@ -7,14 +7,14 @@
     </div>
     <small-space />
     <v-row>
-    <item-card
+    <my-favorite-item-card
       v-for="item in items"
       :key="item.ID"
       :title="item.Title"
       :price="item.Price"
       :img="item.Img"
-      :id="item.ID"
-      @click="toDetail(item.ItemID)"
+      :itemID="item.ItemID"
+      :favoriteID="item.ID"
     />
   </v-row>
   </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ItemCard, SmallSpace, NavigationDrawer } from '@/components'
+import { SmallSpace, NavigationDrawer, MyFavoriteItemCard } from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref, computed } from 'vue';
 import { useStore } from 'vuex';
@@ -35,7 +35,7 @@ import { useRouter } from 'vue-router';
 export default {
   name: 'MyFavoriteItem',
   components: {
-    'item-card': ItemCard,
+    'my-favorite-item-card': MyFavoriteItemCard,
     'small-space': SmallSpace,
     'navigation-drawer': NavigationDrawer,
   },
@@ -49,6 +49,7 @@ export default {
       const url = '/favorite/' + user_id.value
       const {data} = await axios.get(url)
       items.value = data.favorites
+      console.log(items.value)
     }
 
     const toDetail = (item_id) => {
