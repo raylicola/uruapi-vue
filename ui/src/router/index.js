@@ -11,6 +11,7 @@ import {
   EditItem,
   MyPage,
   MyItem,
+  MyFavoriteItem,
   MyWish,
   MySoldItem,
   MyPurchasedItem,
@@ -115,6 +116,11 @@ const routes = [
     path: '/mypage/item',
     name: 'MyItem',
     component: MyItem
+  },
+  {
+    path: '/mypage/favorite',
+    name: 'MyFavoriteItem',
+    component: MyFavoriteItem
   },
   {
     path: '/mypage/sold',

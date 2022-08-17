@@ -7,6 +7,7 @@
       <v-list-item title="商品を出品する" value="createItem" @click="createItem" />
       <v-list-item title="欲しいものリスト" value="wish" @click="wish" />
       <v-list-item title="出品リスト" value="item" @click="item" />
+      <v-list-item title="お気に入り登録した商品" value="favorite" @click="favoriteItem" />
       <v-list-item title="購入した商品" value="purchased" @click="purchasedItem" />
       <v-list-item title="売上履歴" value="sold" @click="soldItem" />
       <v-list-item title="ログアウト" value="logout" @click="logout" />
@@ -29,24 +30,35 @@ export default {
     const mypage = () => {
       router.push('/mypage')
     }
+
     const wish = () => {
       router.push('/mypage/wish')
     }
+
     const item = () => {
       router.push('/mypage/item')
     }
+
+    const favoriteItem = () => {
+      router.push('/mypage/favorite')
+    }
+
     const soldItem = () => {
       router.push('/mypage/sold')
     }
+
     const purchasedItem = () => {
       router.push('/mypage/purchased')
     }
+
     const createWish = () => {
       router.push('/mypage/wish/create')
     }
+
     const createItem = () => {
       router.push('/mypage/item/create')
     }
+
     const logout = () => {
       store.commit('setAuth', false)
       store.commit('setUserID', '')
@@ -57,6 +69,7 @@ export default {
     return {
       wish,
       item,
+      favoriteItem,
       soldItem,
       purchasedItem,
       createItem,

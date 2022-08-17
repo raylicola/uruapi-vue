@@ -10,6 +10,7 @@ export {default as EditItem} from './EditItem';
 export {default as MyPage} from './MyPage';
 export {default as MyWish} from './MyWish';
 export {default as MyItem} from './MyItem';
+export {default as MyFavoriteItem} from './MyFavoriteItem';
 export {default as MySoldItem} from './MySoldItem';
 export {default as MyPurchasedItem} from './MyPurchasedItem';
 export {default as ItemDetail} from './ItemDetail';

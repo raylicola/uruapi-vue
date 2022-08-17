@@ -29,12 +29,26 @@
           <div class="text-h6 text--primary">
             ￥{{item_price}}円
           </div>
-          <div>
+          <div v-if="isSold">
+            <base-button
+              v-if="auth"
+              disabled
+              text="売り切れました"
+              class="ma-3"
+            />
+          </div>
+          <div v-else>
             <base-button
               v-if="auth"
               text="商品を購入する"
               class="ma-3"
               @click="purchaseItem"
+            />
+            <base-button
+              v-if="auth"
+              text="お気に入り登録"
+              class="ma-3"
+              @click="favoriteItem"
             />
           </div>
           <div class="my-4"></div>
@@ -104,6 +118,7 @@ export default {
   },
   setup(){
     const store = useStore()
+    const isSold = ref(false)
     const item_title = ref('')
     const item_detail = ref('')
     const seller_id = ref('')
@@ -144,6 +159,15 @@ export default {
       router.push('/purchase/' + route.params.item_id)
     }
 
+    const favoriteItem = async() => {
+      const url = 'favorite/create'
+      const params = new URLSearchParams()
+      params.append('user_id', user_id.value)
+      params.append('item_id', item_id)
+      await axios.post(url, params)
+      window.confirm('お気に入りの商品に追加しました')
+    }
+
     const getItemDetail = async () => {
       const url = 'item/' + item_id
       const {data} = await axios.get(url)
@@ -152,6 +176,8 @@ export default {
       seller_id.value = data.item.SellerID
       item_path.value = data.item.Img
       item_price.value = data.item.Price
+      isSold.value = data.item.PurchaserID != ""
+      console.log(isSold.value)
       chats.value = data.chats
       reviews.value = data.reviews
 
@@ -173,7 +199,8 @@ export default {
       username, () => username.value,
       chats, () => chats.value,
       reviews, () => reviews.value,
-      chat_text, () => chat_text.value
+      chat_text, () => chat_text.value,
+      isSold, () => isSold.value
     )
 
     return {
@@ -182,6 +209,7 @@ export default {
       item_price,
       item_path,
       icon_path,
+      isSold,
       username,
       chats,
       reviews,
@@ -191,6 +219,7 @@ export default {
       postChat,
       toUserProfile,
       purchaseItem,
+      favoriteItem,
     }
   }
 }
