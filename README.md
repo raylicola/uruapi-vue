@@ -74,5 +74,5 @@ URL : https://uruapi-ddf2d.web.app
   * 売買履歴の閲覧
   * お気に入り登録した商品の閲覧
 
-<img src="https://user-images.githubusercontent.com/76393580/185055827-9a89b7e7-3d77-4dd6-8466-31da86e01ba6.png" width="60%">
+<img src="https://user-images.githubusercontent.com/76393580/185056338-4dd312c8-5cac-45ba-9e76-c0497f4d57a7.png" width="60%">
 
