@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <small-space />
   <v-card
     class="mx-4 my-4"
@@ -55,7 +56,13 @@
 </template>
 
 <script>
-import { SmallSpace, ItemCard, BaseButton, BaseAvatar } from '@/components'
+import {
+  SmallSpace,
+  ItemCard,
+  BaseButton,
+  BaseAvatar,
+  BackButton,
+} from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -70,6 +77,7 @@ export default {
     'item-card': ItemCard,
     'base-button': BaseButton,
     'base-avatar': BaseAvatar,
+    'back-button': BackButton,
   },
   setup(){
 

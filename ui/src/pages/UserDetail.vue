@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <small-space />
   <v-row align="center">
     <v-col cols="2">
@@ -55,6 +56,7 @@ import {
   BaseAvatar,
   ItemCard,
   BaseButton,
+  BackButton,
 } from '@/components'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -69,6 +71,7 @@ export default {
     'base-avatar': BaseAvatar,
     'item-card': ItemCard,
     'base-button': BaseButton,
+    'back-button': BackButton,
   },
   setup() {
     const route = useRoute()

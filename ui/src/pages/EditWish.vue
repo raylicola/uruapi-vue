@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <div class="text-h5">
     欲しいもの
   </div>
@@ -22,6 +23,7 @@ import {
   BaseTextField,
   BaseTextArea,
   SmallSpace,
+  BackButton,
   } from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRoute, useRouter } from 'vue-router'
@@ -36,6 +38,7 @@ export default {
     'base-text-field': BaseTextField,
     'base-text-area': BaseTextArea,
     'small-space': SmallSpace,
+    'back-button': BackButton,
   },
   setup(){
     const title = ref('')

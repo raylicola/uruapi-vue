@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <small-space />
   <item-card
     :img="img"
@@ -28,7 +29,15 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import { useRoute, useRouter } from 'vue-router'
-import { BaseButton, BaseSelect, BaseTextArea, ItemCard, LargeSpace, SmallSpace } from '@/components'
+import {
+  BaseButton,
+  BaseSelect,
+  BaseTextArea,
+  ItemCard,
+  LargeSpace,
+  SmallSpace,
+  BackButton
+} from '@/components'
 import { useStore } from 'vuex'
 
 export default {
@@ -40,6 +49,7 @@ export default {
     'base-text-area': BaseTextArea,
     'base-button': BaseButton,
     'base-select': BaseSelect,
+    'back-button': BackButton,
   },
   setup() {
     const route = useRoute()

@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <small-space />
   <div class="text-h5">
     購入内容の確認
@@ -36,7 +37,7 @@
 import { onMounted, watch, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios'
-import { BaseButton, ItemCard, SmallSpace } from '@/components';
+import { BaseButton, ItemCard, SmallSpace, BackButton, } from '@/components';
 import { useStore } from 'vuex';
 
 export default {
@@ -45,6 +46,7 @@ export default {
     'small-space': SmallSpace,
     'item-card': ItemCard,
     'base-button': BaseButton,
+    'back-button': BackButton,
   },
   setup(){
     const title = ref('')

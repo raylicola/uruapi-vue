@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <small-space />
   <v-card
     class="mx-4 my-4"
@@ -98,6 +99,7 @@ import {
   ChatCard,
   LargeSpace,
   SmallSpace,
+  BackButton,
 } from '@/components'
 import { onMounted, watch, ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -115,6 +117,7 @@ export default {
     'base-button': BaseButton,
     'chat-card': ChatCard,
     'base-avatar': BaseAvatar,
+    'back-button': BackButton,
   },
   setup(){
     const store = useStore()

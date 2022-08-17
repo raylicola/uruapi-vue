@@ -18,3 +18,4 @@ export {default as BaseSelect} from './BaseSelect';
 export {default as MyWishCard} from './MyWishCard';
 export {default as MyItemCard} from './MyItemCard';
 export {default as BaseAvatar} from './BaseAvatar';
+export {default as BackButton} from './BackButton';

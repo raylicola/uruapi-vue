@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <div class="text-h5">
     出品
   </div>
@@ -36,7 +37,8 @@ import {
   BaseTextArea,
   BaseFileInput,
   ImagePreview,
-  SmallSpace
+  SmallSpace,
+  BackButton
   } from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
@@ -56,6 +58,7 @@ export default {
     'base-file-input': BaseFileInput,
     'image-preview': ImagePreview,
     'small-space': SmallSpace,
+    'back-button': BackButton,
   },
   setup(){
     const title = ref('')

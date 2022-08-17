@@ -26,7 +26,11 @@
 </template>
 
 <script>
-import { SmallSpace, NavigationDrawer, MyFavoriteItemCard } from '@/components'
+import {
+  SmallSpace,
+  NavigationDrawer,
+  MyFavoriteItemCard,
+} from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref, computed } from 'vue';
 import { useStore } from 'vuex';

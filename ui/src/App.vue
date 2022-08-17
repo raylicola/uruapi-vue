@@ -1,24 +1,27 @@
 <template>
   <v-app>
-    <TheHeader />
+    <the-header />
     <v-main>
       <v-container>
         <router-view></router-view>
       </v-container>
     </v-main>
-    <TheFooter />
+    <the-footer />
   </v-app>
 </template>
 
 <script>
-import {TheHeader, TheFooter} from '@/components'
+import {
+  TheHeader,
+  TheFooter,
+} from '@/components'
 
 export default {
   name: 'App',
 
   components: {
-    TheHeader,
-    TheFooter
+    'the-header': TheHeader,
+    'the-footer': TheFooter,
   },
 }
 </script>

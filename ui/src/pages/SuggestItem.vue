@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <div class="text-h5">
     提案する商品を選択
   </div>
@@ -16,7 +17,7 @@
 </template>
 
 <script>
-import { ItemCard, SmallSpace } from '@/components'
+import { ItemCard, SmallSpace, BackButton, } from '@/components'
 import axios from 'axios'
 import { onMounted, watch, ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -27,6 +28,7 @@ export default {
   components: {
     'item-card': ItemCard,
     'small-space': SmallSpace,
+    'back-button': BackButton,
   },
   setup(){
     const router = useRouter()

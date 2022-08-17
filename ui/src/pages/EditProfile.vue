@@ -1,4 +1,5 @@
 <template>
+  <back-button />
   <div class="text-h5">
     プロフィーを編集
   </div>
@@ -38,7 +39,8 @@ import {
   BaseTextArea,
   BaseFileInput,
   SmallSpace,
-  BaseAvatar
+  BaseAvatar,
+  BackButton,
   } from '@/components'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
@@ -59,6 +61,7 @@ export default {
     'base-file-input': BaseFileInput,
     'small-space': SmallSpace,
     'base-avatar': BaseAvatar,
+    'back-button': BackButton,
   },
   setup(){
     const introduction = ref('')
