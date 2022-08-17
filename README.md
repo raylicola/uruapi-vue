@@ -41,7 +41,7 @@ URL : https://uruapi-ddf2d.web.app
 パスワード：password
 ```
 
-<img src="https://user-images.githubusercontent.com/76393580/184478492-306f1964-6643-4cc7-bfcb-2bf7a4968ae4.png" width="70%">
+<img src="https://user-images.githubusercontent.com/76393580/185054554-6f811911-dbfb-4351-8e4f-06c9cf3635d4.png" width="60%">
 
 ---
 
@@ -49,23 +49,15 @@ URL : https://uruapi-ddf2d.web.app
 * 自分が出品している商品の提案
 * 提案されている商品の閲覧
 
-<img src="https://user-images.githubusercontent.com/76393580/184854467-a8d5e12d-405f-4dd5-8694-b464bbf8724e.png" width="70%">
+<img src="https://user-images.githubusercontent.com/76393580/185055205-58ae1ad4-ec85-4668-b778-f98665dfa1f0.png" width="60%">
 
 ---
 
 商品のカードをクリックすると, 商品詳細画面に遷移します
 * 商品に対するチャットの閲覧・投稿
-* 商品の購入
+* 商品の購入・お気に入り登録
 
-<img src="https://user-images.githubusercontent.com/76393580/184858642-c0896b11-21cd-4fae-bd1c-26b6de579ecd.png" width="70%">
-
----
-
-右上のボタンから, マイページへ遷移できます
-  * 欲しいものや出品したいものを投稿・編集・削除・閲覧
-  * 売買履歴の閲覧
-
-<img src="https://user-images.githubusercontent.com/76393580/184855185-cfecfe93-5548-4daf-9183-4b4807554839.png" width="70%">
+<img src="https://user-images.githubusercontent.com/76393580/185055336-24c7f44c-dd70-4c47-91ae-6a6e9ef5fd70.png" width="60%">
 
 ---
 
@@ -73,4 +65,14 @@ URL : https://uruapi-ddf2d.web.app
 * ユーザーの出品している商品の閲覧
 * ユーザーへのレビューの閲覧
 
-<img src="https://user-images.githubusercontent.com/76393580/184854492-4c2844df-a0fc-4264-98a6-63cd16ab6c59.png" width="70%">
+<img src="https://user-images.githubusercontent.com/76393580/185054022-b9304384-b34d-46cb-aa1a-7f6d86600b84.png" width="48%">　<img src="https://user-images.githubusercontent.com/76393580/185054044-385309d0-1f65-48e4-8fb9-51d7fbe8965b.png" width="48%">
+
+---
+
+右上のボタンから, マイページへ遷移できます
+  * 欲しいものや出品したいものを投稿・編集・削除・閲覧
+  * 売買履歴の閲覧
+  * お気に入り登録した商品の閲覧
+
+<img src="https://user-images.githubusercontent.com/76393580/185056338-4dd312c8-5cac-45ba-9e76-c0497f4d57a7.png" width="60%">
+
