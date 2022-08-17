@@ -81,20 +81,20 @@ func GetMyItem(c *gin.Context) {
 
 // 購入履歴を取得
 func GetMyPurchasedItem(c *gin.Context) {
-	var Items []models.Item
+	var items []models.Item
 	user_id := c.Param("user_id")
-	database.DB.Where("purchaser_id=?", user_id).Find(&Items)
+	database.DB.Where("purchaser_id=?", user_id).Find(&items)
 
-	c.JSON(http.StatusOK, gin.H{"Items": Items})
+	c.JSON(http.StatusOK, gin.H{"items": items})
 }
 
 // 販売履歴を取得
 func GetMySoldItem(c *gin.Context) {
-	var Items []models.Item
+	var items []models.Item
 	user_id := c.Param("user_id")
-	database.DB.Where("seller_id=?", user_id).Not("purchaser_id=?","").Find(&Items)
+	database.DB.Where("seller_id=?", user_id).Not("purchaser_id=?","").Find(&items)
 
-	c.JSON(http.StatusOK, gin.H{"Items": Items})
+	c.JSON(http.StatusOK, gin.H{"items": items})
 }
 
 // お気に入り登録した商品を取得
